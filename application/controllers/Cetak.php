@@ -23,7 +23,7 @@ class Cetak extends CI_Controller {
     $html = $this->output->get_output();
     $this->load->library('dompdf_gen');
     $this->dompdf->load_html($html);
-    $this->dompdf->render();
+    //$this->dompdf->render();
     $sekarang=date("d:F:Y:h:m:s");
     $this->dompdf->stream("pendaftaran".$sekarang.".pdf",array('Attachment'=>0));
  }
@@ -37,7 +37,7 @@ class Cetak extends CI_Controller {
     $html = $this->output->get_output();
     $this->load->library('dompdf_gen');
     $this->dompdf->load_html($html);
-    $this->dompdf->render();
+    //$this->dompdf->render();
     $sekarang=date("d:F:Y:h:m:s");
     $this->dompdf->stream("Resep Obat".$sekarang.".pdf",array('Attachment'=>0));
  }
@@ -54,7 +54,7 @@ class Cetak extends CI_Controller {
     $html = $this->output->get_output();
     $this->load->library('dompdf_gen');
     $this->dompdf->load_html($html);
-    $this->dompdf->render();
+    //$this->dompdf->render();
     $sekarang=date("d:F:Y:h:m:s");
     $this->dompdf->stream("Pembayaran".$sekarang.".pdf",array('Attachment'=>0));
  }
