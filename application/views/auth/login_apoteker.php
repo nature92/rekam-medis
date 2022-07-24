@@ -1,7 +1,6 @@
 <div class="login-box">
   <div class="login-logo">
-    <i><b>Klinik Pratama Rahardja</b></i>
-     <li class="fa fa-heartbeat"> </li>
+    <img class="img-responsive login-logo" src="<?php echo base_url();?>assets/img/logo_rhj.png" alt="No Available picture" width="650px">
   </div>
         <!-- /.login-logo -->
   <div class="login-box-body">

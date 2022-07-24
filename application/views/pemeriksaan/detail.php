@@ -1,9 +1,9 @@
-        <div class="content-wrapper">
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        <?= $desc; ?>
-      </h1>
+		<h1>
+			<?= $desc; ?>
+		</h1>
     </section>
         <!-- Main content -->
     <section class="content">
@@ -50,13 +50,6 @@
                    </div>
                  </div>
                 <?php }?>
-
-              
-         
-      
         <!-- /.container-fluid -->
       </form>
-    
- 
-
 </div>

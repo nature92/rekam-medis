@@ -1,13 +1,12 @@
 <div class="login-box">
   <div class="login-logo">
-    <i><b>Klinik Pratama Rahardja</b></i>
-     <li class="fa fa-heartbeat"> </li>
+    <!--<i><b>Klinik Pratama Rahardja</b></i> -->
+    <!--<li class="fa fa-heartbeat"> </li>-->
+	<img class="img-responsive login-logo" src="<?php echo base_url();?>assets/img/logo_rhj.png" alt="No Available picture" width="650px">
   </div>
         <!-- /.login-logo -->
   <div class="login-box-body">
       <h4 class="login-box-msg">Login Dokter</h4>
-                
-
                <?= $this->session->flashdata('message'); ?>
                 <form class="user" method="post" action="<?= base_url('auth') ?>">
                     <div class="form-group">
