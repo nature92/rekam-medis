@@ -46,7 +46,7 @@
 <link rel="stylesheet" href="<?= base_url();?>assets/vendor/bower_components/select2/dist/css/select2.min.css">
 <script src="<?php echo base_url('assets/js/ajax.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url().'assets/js/jquery-3.3.1.js'?>"></script>
-
+<link rel="icon" type="image/x-icon" href="<?php echo base_url();?>assets/img/favicon.png">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 

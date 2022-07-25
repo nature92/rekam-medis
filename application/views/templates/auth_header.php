@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="<?= base_url();?>assets/vendor/plugins/iCheck/square/blue.css">
  
  <link rel="stylesheet" href="<?= base_url();?>assets/vendor/plugins/iCheck/all.css">
-
+<link rel="icon" type="image/x-icon" href="<?php echo base_url();?>assets/img/favicon.png">
 </head>
 
 <body class="hold-transition login-page">
