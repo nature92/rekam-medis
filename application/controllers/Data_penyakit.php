@@ -31,7 +31,7 @@ class Data_penyakit extends CI_Controller {
 	{
 
 		$judul['judul'] = 'Halaman Tambah Data Penyakit';
-		$data['kode'] = $this->m_id->buat_kode_penyakit();
+		$data['kode'] = $this->M_id->buat_kode_penyakit();
 
 		$this->form_validation->set_rules('nama_penyakit', 'Nama penyakit', 'required');
 				

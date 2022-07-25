@@ -131,7 +131,7 @@ class Input extends CI_Controller {
         $data['title'] = 'Input data kelas';
 
         $data['user'] = $this->db->get_where('user',['nip' => $this->session->userdata('nip')])->row_array();
-        $data1['kodeunik'] = $this->m_id->buat_kode();
+        $data1['kodeunik'] = $this->M_id->buat_kode();
         
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -143,7 +143,7 @@ class Input extends CI_Controller {
         if($_POST){
             $id=$this->input->post('idkelas');
             $nama=$this->input->post('nama_kelas');
-            $this->m_id->input_kode(array(
+            $this->M_id->input_kode(array(
                 'id_kelas' =>$id,
                 'nama_kelas' =>$nama
                 ));

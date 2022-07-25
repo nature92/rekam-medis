@@ -20,8 +20,8 @@ class Data_pasien extends CI_Controller {
 	{
 		$judul['judul'] = 'Halaman Data Pasien';
 		$data['pasien'] = $this->Pasien_model->getAllPasien()->result();
-		$data['kodeunik'] = $this->m_id->buat_kode();
-		$kodeunik = $this->m_id->buat_kode();
+		$data['kodeunik'] = $this->M_id->buat_kode();
+		$kodeunik = $this->M_id->buat_kode();
 		$this->load->helper('date');
 		$cek = $this->db->query("SELECT tanggal_lahir FROM pasien where kd_rm = '$kodeunik'")->row_array();
 		$awal = strtotime($cek);
@@ -41,7 +41,7 @@ class Data_pasien extends CI_Controller {
 	{
 
 		$judul['judul'] = 'Halaman Tambah Data Pasien';
-		$data['kodeunik'] = $this->m_id->buat_kode();
+		$data['kodeunik'] = $this->M_id->buat_kode();
 		$data['admin'] = $this->db->get_where('admin',['username' => $this->session->userdata('username')])->row_array();
 
 		$this->form_validation->set_rules('nama_pasien', 'Nama Pasien', 'required');

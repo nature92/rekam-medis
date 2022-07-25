@@ -25,7 +25,7 @@ class Pembayaran extends CI_Controller {
 	{
 		$judul['judul'] = 'Halaman Pembayaran';
 		$data['admin'] = $this->db->get_where('admin',['username' => $this->session->userdata('username')])->row_array();
-		$data['kodebayar'] = $this->m_id->buat_kode_bayar();
+		$data['kodebayar'] = $this->M_id->buat_kode_bayar();
 		$data['bayar'] = $this->Pembayaran_model->getAllBayar();
 
 		
@@ -41,16 +41,16 @@ class Pembayaran extends CI_Controller {
 	{
 
 		$judul['judul'] = 'Halaman Tambah Data Pembayaran';
-		$data['kodebayar'] = $this->m_id->buat_kode_bayar();
-		$kodebayar = $this->m_id->buat_kode_bayar();
+		$data['kodebayar'] = $this->M_id->buat_kode_bayar();
+		$kodebayar = $this->M_id->buat_kode_bayar();
 		$where = array('kd_resep' => $kd_resep);
 		$data['kode'] = $this->Pembayaran_model->tampil_detail($where)->result();
 		$data['tarif'] = $this->Pembayaran_model->tampil();
 		$data['resep'] = $this->Resep_model->tampil();
 		$data['pemeriksaan'] = $this->Pembayaran_model->getBayar($where);
 		$data['bayar'] = $this->db->query("SELECT * FROM detail_bayar JOIN tarif on detail_bayar.id_tarif = tarif.id_tarif WHERE kd_bayar='$kodebayar'")->result();
-		$subtotal = $this->Resep_model->hitungjumlahbayar('detail_bayar', ['kd_bayar' => $this->m_id->buat_kode_bayar()]);
-		$data['subtotal'] = $this->Resep_model->hitungjumlahbayar('detail_bayar', ['kd_bayar' => $this->m_id->buat_kode_bayar()]); 
+		$subtotal = $this->Resep_model->hitungjumlahbayar('detail_bayar', ['kd_bayar' => $this->M_id->buat_kode_bayar()]);
+		$data['subtotal'] = $this->Resep_model->hitungjumlahbayar('detail_bayar', ['kd_bayar' => $this->M_id->buat_kode_bayar()]); 
 		$cek = $this->db->query("SELECT subtotal FROM resep WHERE kd_resep='$kd_resep'")->row_array();
 		$data['totalbayar'] = floatval($subtotal) + $cek['subtotal'];
 		 $data['data']=$this->Pembayaran_model->get_all_produk();
@@ -116,8 +116,8 @@ class Pembayaran extends CI_Controller {
 	{
 
 		$judul['judul'] = 'Halaman Detail Data Pembayaran';
-		$data['kodebayar'] = $this->m_id->buat_kode_bayar();
-		$kodebayar = $this->m_id->buat_kode_bayar();
+		$data['kodebayar'] = $this->M_id->buat_kode_bayar();
+		$kodebayar = $this->M_id->buat_kode_bayar();
 		$where = array('kd_resep' => $kd_resep);
 		$data['kode'] = $this->Pembayaran_model->tampil_detail($where)->result();
 		$data['pembayaran'] = $this->db->query("SELECT * FROM pembayaran where kd_resep = '$kd_resep'")->result();
@@ -161,7 +161,7 @@ class Pembayaran extends CI_Controller {
 
 		$judul['judul'] = 'Pemeriksaan';
 		$data['desc'] = 'Informasi Pasien';
-		$data['kodeperiksa'] = $this->m_id->buat_kode_periksa();
+		$data['kodeperiksa'] = $this->M_id->buat_kode_periksa();
 		$data['tanggal'] = date("d-m-Y");
 		$data['dokter'] = $this->db->get_where('dokter',['username' => $this->session->userdata('username')])->row_array();
 		$where1 = array('kd_rm' => $kd_rm);

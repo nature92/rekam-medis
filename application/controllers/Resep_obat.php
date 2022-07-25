@@ -22,7 +22,7 @@ class Resep_obat extends CI_Controller {
 	public function index()
 	{
 		$judul['judul'] = 'Halaman Resep Obat';
-		$data['koderesep'] = $this->m_id->buat_kode_resep();
+		$data['koderesep'] = $this->M_id->buat_kode_resep();
 		$data['pemeriksaan'] = $this->Pemeriksaan_model->view_all1();		
 		$data['dokter'] = $this->db->get_where('dokter',['username' => $this->session->userdata('username')])->row_array();
 		
@@ -55,8 +55,8 @@ class Resep_obat extends CI_Controller {
 
 		$judul['judul'] = 'Resep Obat';
 		$data['desc'] = 'Informasi Pasien';
-		$data['koderesep'] = $this->m_id->buat_kode_resep();
-		$koderesep = $this->m_id->buat_kode_resep();
+		$data['koderesep'] = $this->M_id->buat_kode_resep();
+		$koderesep = $this->M_id->buat_kode_resep();
 		$data['dokter'] = $this->db->get_where('dokter',['username' => $this->session->userdata('username')])->row_array();
 		$where = array('id_periksa' => $id_periksa);
 		$data['pemeriksaan'] = $this->Resep_model->tampil_detail($where)->result();
@@ -65,7 +65,7 @@ class Resep_obat extends CI_Controller {
 		$data['periksa'] = $this->Pemeriksaan_model->getPemeriksaan();
 		$data['aturan'] = $this->db->query("SELECT nama_aturan FROM aturan_pakai ")->result();
 		$data['resep'] = $this->db->query(" SELECT * FROM detail_resep JOIN obat on detail_resep.id_obat = obat.id_obat WHERE kd_resep='$koderesep'")->result();
-		$data['subtotal'] = $this->Resep_model->hitungjumlah('detail_resep', ['kd_resep' => $this->m_id->buat_kode_resep()]);
+		$data['subtotal'] = $this->Resep_model->hitungjumlah('detail_resep', ['kd_resep' => $this->M_id->buat_kode_resep()]);
 		$data['dokter'] = $this->db->get_where('dokter',['username' => $this->session->userdata('username')])->row_array();
 		
 		$this->load->view('templates/home_header', $judul);
