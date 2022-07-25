@@ -1,5 +1,5 @@
 <?php
-$pdf = new FPDF("P","cm","F4");
+$pdf = new FPDF("P","cm","Legal");
 
 $pdf->SetMargins(2,1,1);
 $pdf->AliasNbPages();
