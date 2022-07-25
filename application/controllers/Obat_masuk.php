@@ -14,7 +14,7 @@ class Obat_masuk extends CI_Controller {
 		$this->load->model('Apoteker_model');
 		$this->load->model('Resep_model');
 		$this->load->model('Obat_model');
-		$this->load->model('m_id');
+		$this->load->model('M_id');
 		$this->load->library('form_validation');
 	}
 
@@ -35,11 +35,11 @@ class Obat_masuk extends CI_Controller {
 		public function tambah(){
 
 			$judul['judul'] = 'Halaman Tambah Transaksi';
-			$data['kodemasuk'] = $this->m_id->buat_kode_masuk();
-			$kodemasuk = $this->m_id->buat_kode_masuk();
+			$data['kodemasuk'] = $this->M_id->buat_kode_masuk();
+			$kodemasuk = $this->M_id->buat_kode_masuk();
 			$data['obat'] = $this->db->query("SELECT * FROM obat ORDER BY nama_obat ASC")->result();
 			$data['masuk'] = $this->db->query("SELECT * FROM detail_masuk JOIN obat ON detail_masuk.kd_obat =obat.id_obat WHERE kd_masuk ='$kodemasuk'")->result();
-			$data['subtotal'] = $this->Resep_model->hitung('detail_masuk', ['kd_masuk' => $this->m_id->buat_kode_masuk()]);
+			$data['subtotal'] = $this->Resep_model->hitung('detail_masuk', ['kd_masuk' => $this->M_id->buat_kode_masuk()]);
 			$data['petugas_obat'] = $this->db->get_where('petugas_obat',['username' => $this->session->userdata('username')])->row_array();
 
 

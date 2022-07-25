@@ -13,7 +13,7 @@ class Pemeriksaan extends CI_Controller {
 		$this->load->model('Pembayaran_model');
 		$this->load->model('Karyawan_model');
 		$this->load->model('Obat_model');
-		$this->load->model('m_id');
+		$this->load->model('M_id');
 		$this->load->library('form_validation');
 		$this->load->helper('url');
 	}
@@ -35,7 +35,7 @@ class Pemeriksaan extends CI_Controller {
 	public function periksa($kd_rm){
 		$judul['judul'] = 'Pemeriksaan';
 		$data['desc'] = 'Tambah Pemeriksaan';
-		$data['kodeperiksa'] = $this->m_id->buat_kode_periksa();
+		$data['kodeperiksa'] = $this->M_id->buat_kode_periksa();
 		$data['tanggal'] = date("d-m-Y");
 		$data['dokter'] = $this->db->get_where('dokter',['username' => $this->session->userdata('username')])->row_array();
 		$where1 = array('kd_rm' => $kd_rm);

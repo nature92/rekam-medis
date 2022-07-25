@@ -4,7 +4,7 @@ class Cetak extends CI_Controller {
  function __construct(){
   parent::__construct();
   $this->load->model('Resep_model');
-  $this->load->model('m_id');
+  $this->load->model('M_id');
  }
  public function index(){
   $data = array(
