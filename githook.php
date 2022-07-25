@@ -11,7 +11,6 @@
 	$commands = array(
 		//'echo $PWD',
 		'whoami',
-		'git merge --ff-only origin/master'
 		'git reset --hard HEAD',
 		'git pull --no-edit',
 		'git status',
