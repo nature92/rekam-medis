@@ -9,7 +9,7 @@ class Input extends CI_Controller {
             redirect(base_url("auth"));
         }
         $this->load->database();
-        $this->load->model('m_id');
+        $this->load->model('M_id');
         $this->load->model('m_kelas');
 		$this->load->model('m_admin');
         $this->load->model('m_siswa');

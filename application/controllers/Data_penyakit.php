@@ -12,7 +12,7 @@ class Data_penyakit extends CI_Controller {
 		}
 
 		$this->load->model('Penyakit_model');
-		$this->load->model('m_id');
+		$this->load->model('M_id');
 		$this->load->library('form_validation');
 	}
 

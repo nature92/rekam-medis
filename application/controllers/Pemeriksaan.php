@@ -13,7 +13,7 @@ class Pemeriksaan extends CI_Controller {
 		$this->load->model('Pembayaran_model');
 		$this->load->model('Karyawan_model');
 		$this->load->model('Obat_model');
-		$this->load->model('m_id');
+		$this->load->model('M_id');
 		$this->load->library('form_validation');
 		$this->load->helper('url');
 	}
