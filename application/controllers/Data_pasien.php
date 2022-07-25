@@ -65,15 +65,21 @@ class Data_pasien extends CI_Controller {
 		redirect('data_pasien/index');
 
 		}
-		
-
-	
 	}
 
-	public function hapus($kd_rm)
-	{
-		$this->Pasien_model->hapus_data($kd_rm);
-		redirect('data_pasien/index');
+	public function hapus($kd_rm){
+		$kodeperiksa = $this->Pasien_model->cekPeriksaRekamMedis($kd_rm);
+		if($kodeperiksa == '' or $kodeperiksa == null){
+			$this->Pasien_model->hapus_data($kd_rm);
+			
+			redirect('data_pasien');
+		}else{
+			$this->session->set_flashdata('msg', '<div class="alert alert-error"> 
+												  <button type="button" class="close" data-dismiss="alert">&times;</button>
+												  Gagal hapus, data pemeriksaan belum dihapus.
+												</div>');
+			redirect('data_pasien');
+		}
 	}
 
 

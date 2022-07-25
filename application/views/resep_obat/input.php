@@ -66,7 +66,7 @@
             </div>
             <label for="harga" class="col-sm-1 col-form-label">Harga </label>
             <div class="col-sm-2">
-            <input type="text" class="form-control" id="harga" name="harga">         
+            <input type="text" class="form-control" id="harga" name="harga" readonly >         
           </div>
            <label for="stok" class="col-sm-1 col-form-label">Stok </label>
             <div class="col-sm-1">
@@ -74,13 +74,13 @@
           </div>
           <label for="stok_out" class="col-sm-1 col-form-label">Stok Keluar </label>
             <div class="col-sm-1">
-            <input type="number" class="form-control" name="stok_out" >         
+            <input type="number" class="form-control" name="stok_out" required >         
           </div>
           </div>
                 <div class="form-group row">
                 <label for="aturan_pakai" class="col-sm-2 control-label">Aturan Pakai</label>
                 <div class="col-sm-10">
-                <select class="form-control select2" multiple="multiple"  id="aturan_pakai" name="aturan_pakai[]"><option value=''>Pilih Aturan Pakai</option>
+                <select class="form-control select2" multiple="multiple"  id="aturan_pakai" name="aturan_pakai[]" required ><option value=''>Pilih Aturan Pakai</option>
                    <?php foreach ($aturan as $r) : ?>
                          <option value="<?= $r->nama_aturan ?>"><?= $r->nama_aturan ?></option>
                        <?php endforeach; ?>
@@ -109,6 +109,7 @@
                       <th>Total Stok</th>  
                       <th>Total</th>          
                      <th>Aksi</th>
+                     <th>Aksi</th>
                       
                     </tr>
                   </thead>
@@ -126,9 +127,10 @@
                       <td><?= $r->stok_out ?></td>
                       <td><?= $r->stok_tot ?></td>
                       <td><?= 'Rp. '.number_format($r->total,0,',','.') ?></td>
+                      <td><?= $r->id_pemeriksaan ?></td>
                       <td>
                         
-                        <a href="<?= base_url('resep_obat/hapus/'.$r->id_detail) ?>" class="btn btn-danger btn-xs float-right">Hapus</a>  
+                        <a href="<?= base_url('resep_obat/hapus/'.$r->id_detail.'/'.$r->id_pemeriksaan) ?>" class="btn btn-danger btn-xs float-right">Hapus</a>  
             
                       </td>
                       

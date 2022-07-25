@@ -64,7 +64,10 @@ class Resep_obat extends CI_Controller {
 		$data['resep1'] = $this->Resep_model->tampil();
 		$data['periksa'] = $this->Pemeriksaan_model->getPemeriksaan();
 		$data['aturan'] = $this->db->query("SELECT nama_aturan FROM aturan_pakai ")->result();
-		$data['resep'] = $this->db->query(" SELECT * FROM detail_resep JOIN obat on detail_resep.id_obat = obat.id_obat WHERE kd_resep='$koderesep'")->result();
+		$data['resep'] = $this->db->query(" SELECT * FROM detail_resep 
+											JOIN obat on detail_resep.id_obat = obat.id_obat 
+											left join resep on resep.kd_resep = detail_resep.kd_resep
+											WHERE detail_resep.kd_resep='$koderesep'")->result();
 		$data['subtotal'] = $this->Resep_model->hitungjumlah('detail_resep', ['kd_resep' => $this->M_id->buat_kode_resep()]);
 		$data['dokter'] = $this->db->get_where('dokter',['username' => $this->session->userdata('username')])->row_array();
 		
@@ -107,7 +110,8 @@ class Resep_obat extends CI_Controller {
 
 		if ($tambah) {
 			if ($stok_tot < 0) {
-				echo "<script language=\"javascript\">alert (\"Stok tidak cukup atau habis\"); document.location=\"../transaksi/tambah_keluar\"</script>";
+				// echo "<script language=\"javascript\">alert (\"Stok tidak cukup atau habis\"); document.location=\"../transaksi/tambah_keluar\"</script>";
+				echo "<script language=\"javascript\">alert (\"Stok tidak cukup atau habis\"); document.location=\"../resep_obat/detail/".$id_periksa."\"</script>";
 		    }else{
 				if ($cek > 0) {
 				$this->db->query("UPDATE detail_resep set stok_out='$stok_out2', stok_tot='$stok_tot2', total='$total2' WHERE kd_resep='$kd_resep' AND id_obat='$id_obat'");
@@ -147,10 +151,10 @@ class Resep_obat extends CI_Controller {
 
 
 	
-	public function hapus($kd_resep)
+	public function hapus($kd_resep, $id_pemeriksaan)
 	{
 		$this->Resep_model->hapus_data($kd_resep);
-		redirect('resep_obat/index');
+		redirect('resep_obat/detail/'.$id_pemeriksaan);
 	}
 
 	

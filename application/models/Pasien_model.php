@@ -144,7 +144,22 @@ class Pasien_model extends CI_Model {
   		$this->db->select('*');    
 		$this->db->from('pasien');     
   		return $query = $this->db->get()->result_array();
-  	}        
+  	}
+	
+	public function cekPeriksaRekamMedis($kd_rm){
+        $sql = $this->db->query(
+            "	select id_periksa
+				from pemeriksaan 
+				where kd_rm = '" . $kd_rm . "'
+            ");
+        $num = $sql->num_rows();
+        if ($num > 0) {
+            $res = $sql->row();
+            return $res->id_periksa;
+        } else {
+            return 0;
+        }
+    }
 
 
  

@@ -50,6 +50,25 @@ class Pemeriksaan extends CI_Controller {
 		$this->load->view('pemeriksaan/input', $data2);
 		$this->load->view('templates/home_footer');
 	}
+	
+	public function periksaDetail($kd_rm){
+		$judul['judul'] = 'Pemeriksaan';
+		$data['desc'] = 'Tambah Pemeriksaan';
+		$data['kodeperiksa'] = $this->M_id->buat_kode_periksa();
+		$data['tanggal'] = date("d-m-Y");
+		$data['dokter'] = $this->db->get_where('dokter',['username' => $this->session->userdata('username')])->row_array();
+		$where1 = array('kd_rm' => $kd_rm);
+		$data1['pasien'] = $this->Pemeriksaan_model->tampil_detail($where1)->result();
+		$data2['pemeriksaan'] = $this->Pemeriksaan_model->tampil_pemeriksaan($where1)->result();
+		$data['dokter'] = $this->db->get_where('dokter',['username' => $this->session->userdata('username')])->row_array();
+		$data['tarif'] = $this->Pembayaran_model->tampil();
+		$this->load->view('templates/home_header', $judul);
+		$this->load->view('templates/home_sidebar',$data);
+		$this->load->view('templates/home_topbar', $data);
+		$this->load->view('pemeriksaan/detail', $data1);
+		$this->load->view('pemeriksaan/detail_periksa', $data2);
+		$this->load->view('templates/home_footer');
+	}
 
 	function tambah_aksi(){
 		$username = $this->session->userdata('username');
