@@ -11,12 +11,11 @@ Menambah detail (melihat rekam medis) di data pasien
 Read only harga obat di halaman dokter
 
 26-07-2022
-
+Update stok obat belum ada di ubah data obat dan tambah obat baru (apoteker)
 
 ====================================
 PR
 Cetak resi pembayaran tiap pasien. Menambah tombol cetak di menu laporan pembayaran (admin)
-Update stok obat belum ada di ubah data obat dan tambah obat baru (apoteker)
 Tambah text area di menu rekam medis dibawah tindakan (admin)
 Tambah resep obat masih belum fix (dokter)
 Menampilkan total pendapatan di laporan keuangan (admin)
