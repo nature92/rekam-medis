@@ -24,7 +24,7 @@
 								</div>
 							</div>
 							<div class="form-group row">
-								<label for="harga" class="col-sm-2 col-form-label">Stok </label>
+								<label for="stok" class="col-sm-2 col-form-label">Stok </label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control" id="stok" name="stok" value="<?= $obat['stok'];?>" >
 								</div>
