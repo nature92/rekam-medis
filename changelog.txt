@@ -24,4 +24,5 @@ Benerin textarea yang ada tab-nya. "Keluhan" di tambah pemeriksaan (dokter), "Al
 ------------------------------------
 PR - Minor (Jangka panjang)
 Ubah password
-Import export ke excell
+Import export data pasien ke excell
+Generate report pembayaran tiap awal bulan
