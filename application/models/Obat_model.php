@@ -7,7 +7,7 @@ class Obat_model extends CI_Model {
 	function tambah_data(){
 		$data = [
 					'nama_obat' => $this->input->post('nama_obat'),
-					'stok' => 0,
+					'stok' => $this->input->post('stok'),
 					'harga' => $this->input->post('harga')
 				];
 		$this->db->insert('obat', $data);
