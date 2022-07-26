@@ -14,8 +14,14 @@ Read only harga obat di halaman dokter
 Update stok obat belum ada di ubah data obat dan tambah obat baru (apoteker)
 
 ====================================
-PR
+PR - Mayor
 Cetak resi pembayaran tiap pasien. Menambah tombol cetak di menu laporan pembayaran (admin)
-Tambah text area di menu rekam medis dibawah tindakan (admin)
+Tambah text area "therapy" di menu rekam medis dibawah tindakan (admin)
 Tambah resep obat masih belum fix (dokter)
 Menampilkan total pendapatan di laporan keuangan (admin)
+Benerin textarea yang ada tab-nya. Keluhan di tambah pemeriksaan (dokter), Alamat di tambah data pasien (admin)
+
+------------------------------------
+PR - Minor (Jangka panjang)
+Ubah password
+Import export ke excell
