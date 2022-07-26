@@ -1,0 +1,22 @@
+24-07-2022
+Tampilin logo di halaman login dan topbar
+Menu lihat rekam medis di admin
+Logout pindah pojok kanan atas
+
+25-07-2022
+Update fpdf 
+Upgrade php5.6 ke 7.2
+Error handling update obat, delete pasien
+Menambah detail (melihat rekam medis) di data pasien
+Read only harga obat di halaman dokter
+
+26-07-2022
+
+
+====================================
+PR
+Cetak resi pembayaran tiap pasien. Menambah tombol cetak di menu laporan pembayaran (admin)
+Update stok obat belum ada di ubah data obat dan tambah obat baru (apoteker)
+Tambah text area di menu rekam medis dibawah tindakan (admin)
+Tambah resep obat masih belum fix (dokter)
+Menampilkan total pendapatan di laporan keuangan (admin)
