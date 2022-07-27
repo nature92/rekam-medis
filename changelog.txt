@@ -13,10 +13,12 @@ Read only harga obat di halaman dokter
 26-07-2022
 Update stok obat belum ada di ubah data obat dan tambah obat baru (apoteker)
 
+27-07-2022
+Tambah text area "terapi" di menu rekam medis dibawah tindakan (admin)
+
 ====================================
 PR - Mayor
 Cetak resi pembayaran tiap pasien. Menambah tombol cetak di menu laporan pembayaran (admin)
-Tambah text area "therapy" di menu rekam medis dibawah tindakan (admin)
 Tambah resep obat masih belum fix (dokter)
 Menampilkan total pembayaran di "master laporan -> laporan data pembayaran" (admin)
 Benerin textarea yang ada tab-nya. "Keluhan" di tambah pemeriksaan (dokter), "Alamat" di tambah data pasien (admin)
