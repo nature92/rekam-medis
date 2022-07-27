@@ -30,8 +30,12 @@
 					</div>
 				</div>
 				<div class="form-group row">
-				  <label class="col-form-label col-sm-2">Tindakan</label>
-					<div class="col-sm-10">
+					<label for="terapi" class="col-sm-2 col-form-label">Terapi</label>
+					<div class="col-sm-4">
+						<textarea id="terapi" name="terapi" rows="3" cols="51" required="terapi"> </textarea>
+					</div>
+					<label class="col-form-label col-sm-2">Tindakan</label>
+					<div class="col-sm-4">
 						<div class="form-check">
 						  <?php foreach ($tarif as $r) : ?>
 						<div class="form-check">
@@ -42,10 +46,6 @@
 						</div>
 						<?php endforeach; ?>
 						</div> 
-					</div>
-					<label for="terapi" class="col-sm-2 col-form-label">Terapi</label>
-					<div class="col-sm-4">
-						<textarea id="terapi" name="terapi" rows="3" cols="51" required="terapi"> </textarea>
 					</div>
 				</div>
 				<div class="box-footer">
@@ -68,7 +68,8 @@
 							<th>Kode Pemeriksaan</th>
 							<th>Diagnosa</th>
 							<th>Keluhan</th>
-							<th>Tindakan</th>                   
+							<th>Tindakan</th>
+							<th>Terapi</th>
 							<th>Aksi</th>
 						</tr>
 					</thead>
@@ -84,6 +85,7 @@
 							<td><?= $r->diagnosa ?></td> 
 							<td><?= $r->keluhan ?></td>
 							<td><?= $r->tindakan ?></td>
+							<td><?= $r->terapi ?></td>
 							<td>							
 								<a href="<?= base_url('pemeriksaan/hapus/'.$r->id_periksa) ?>" class="btn btn-danger float-right" onclick="return confirm('yakin dok, mau dihapus?');">Hapus</a>  				
 							</td>
