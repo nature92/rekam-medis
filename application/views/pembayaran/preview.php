@@ -5,7 +5,9 @@ $pdf->SetMargins(2,1,1);
 $pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->SetFont('Times','',12);
-// $pdf->Image('assets/img/aplikasi/logo.png',2.5,0.5,3,2.5);
+$image1 = "assets/img/aplikasi/logo_rhj.png";
+// $pdf->Image('assets/img/aplikasi/logo_rhj.png',2.5,0.5,3,2.5);
+// $pdf->Image($image1,2.5,0.5,3,2.5);
 $pdf->SetX(8);            
 $pdf->MultiCell(19.5,0.7,"KLINIK PRATAMA",0,'C');   
 $pdf->SetFont('Times','B',14); 
@@ -26,6 +28,7 @@ $pdf->MultiCell(31,0.7,''.$ket.'',0,'C');
 $pdf->SetFont('Arial','',10);
 $pdf->Cell(5,0.6,"Di cetak pada : ".date("d/m/Y"),0,0,'C');
 $pdf->ln(1);
+
 
 $pdf->SetFont('Arial','B',10);
 $pdf->Cell(1, 0.8, 'NO', 1, 0, 'C');

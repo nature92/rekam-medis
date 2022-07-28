@@ -59,8 +59,7 @@
 				   <div class="form-group row">
 					<label for="alamat" class="col-sm-2 col-form-label" >Alamat</label>
 					<div class="col-sm-10">
-					<textarea class="form-control" id="alamat" name="alamat" rows="3" value="<?= set_value('alamat') ?>">	
-					</textarea>
+					<textarea id="alamat" name="alamat" rows="3" value="<?= set_value('alamat') ?>" class="form-control"></textarea>
 					</div>
 				  </div>
 				 <div class="form-group row">
