@@ -16,15 +16,18 @@ Update stok obat belum ada di ubah data obat dan tambah obat baru (apoteker)
 27-07-2022
 Tambah text area "terapi" di menu rekam medis dibawah tindakan (admin)
 
+28-07-2022
+Cetak resi pembayaran tiap pasien. Menambah tanggal periksa dan tanggal cetak (admin)
+Benerin textarea yang ada tab-nya. "Keluhan" di tambah pemeriksaan (dokter), "Alamat" di tambah data pasien (admin)
+
 ====================================
 PR - Mayor
-Cetak resi pembayaran tiap pasien. Menambah tombol cetak di menu laporan pembayaran (admin)
 Tambah resep obat masih belum fix (dokter)
 Menampilkan total pembayaran di "master laporan -> laporan data pembayaran" (admin)
-Benerin textarea yang ada tab-nya. "Keluhan" di tambah pemeriksaan (dokter), "Alamat" di tambah data pasien (admin)
 
 ------------------------------------
 PR - Minor (Jangka panjang)
-Ubah password
+Ubah password (set minimal password), update profile
 Import export data pasien ke excell
 Generate report pembayaran tiap awal bulan
+Halaman login tidak perlu memilih. Langsung masukin username password
