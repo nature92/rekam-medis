@@ -1,5 +1,5 @@
 <?php 
-class Admin_model extends CI_Model {
+class Master_model extends CI_Model {
 	public function getAllAdmin(){
 		return $this->db->get('admin');
 	}

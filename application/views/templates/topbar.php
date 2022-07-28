@@ -30,9 +30,9 @@
                                 <small><?php //echo $this->session->userdata('divisi'); ?></small>
                             </p>
 						<li class="user-footer">
-							<!--<div class="pull-left">
-								<a href="#<?php //echo site_url('User/profile') ?>" class="btn btn-default btn-flat">Profil</a>
-							</div>-->
+							<div class="pull-left">
+								<a href="<?= base_url('master/profile'); ?>" class="btn btn-default btn-flat">Profil</a>
+							</div>
 							<div class="pull-right">
 								<a href="<?php echo site_url('auth/logout') ?>" class="btn btn-default btn-flat">Keluar</a>
 							</div>
