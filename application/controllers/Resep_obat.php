@@ -119,8 +119,9 @@ class Resep_obat extends CI_Controller {
 							'subtotal' => $subtotal,
 							'tanggal_resep' => $tanggal_resep,
 							'id_dokter' => $id_dokter['id_dokter']
-						); 
-			$this->Resep_model->input_data($data, 'resep');
+						);  // asli
+			// $this->Resep_model->input_data($data, 'resep'); // asli
+			$this->Resep_model->updateResep($kd_resep, $subtotal, $tanggal_resep); // asli
 			$this->db->query("UPDATE obat JOIN detail_resep ON obat.id_obat = detail_resep.id_obat SET obat.stok = detail_resep.stok_tot WHERE detail_resep.kd_resep = '$kd_resep'");
 			redirect('resep_obat/lihat/'.$id_periksa,'');
 		}
