@@ -19,12 +19,26 @@ Benerin textarea yang ada tab-nya. "Keluhan" di tambah pemeriksaan (dokter), "Al
 Menampilkan total pembayaran di "master laporan -> laporan data pembayaran" (admin)
 Tambah resep obat masih belum fix (dokter)
 
+28-07-2022
+Cetak resi pembayaran tiap pasien. Menambah tanggal periksa dan tanggal cetak (admin)
+Benerin textarea yang ada tab-nya. "Keluhan" di tambah pemeriksaan (dokter), "Alamat" di tambah data pasien (admin)
+
 ====================================
 PR - Mayor
+<<<<<<< HEAD
 Cetak resi pembayaran tiap pasien. Menambah tombol cetak di menu laporan pembayaran (admin) - ??
 
 ------------------------------------
 PR - Minor (Jangka panjang)
 Ubah password (admin-->belum dikasih hash)
+=======
+Tambah resep obat masih belum fix (dokter)
+Menampilkan total pembayaran di "master laporan -> laporan data pembayaran" (admin)
+
+------------------------------------
+PR - Minor (Jangka panjang)
+Ubah password (set minimal password), update profile
+>>>>>>> 342f9bb07d84c663b20467021b931967ec436391
 Import export data pasien ke excell
 Generate report pembayaran tiap awal bulan
+Halaman login tidak perlu memilih. Langsung masukin username password
