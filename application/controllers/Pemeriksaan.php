@@ -90,8 +90,8 @@ class Pemeriksaan extends CI_Controller {
 						'tanggal' => $tanggal,
 						'id_dokter' => $id_dokter['id_dokter']
 					);
-		$last = $this->Pemeriksaan_model->getLastKdResep();
-		$kd_resep = (int) $last + 1;
+		$kd_resep = $this->Pemeriksaan_model->getLastKdResep();
+		// $kd_resep = (int) $last + 1;
 		$dataresep = array(
 						'id_pemeriksaan' => $id_periksa,
 						'id_dokter' => $id_dokter['id_dokter'],
