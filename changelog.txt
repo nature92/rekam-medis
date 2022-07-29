@@ -20,14 +20,17 @@ Tambah text area "terapi" di menu rekam medis dibawah tindakan (admin)
 Cetak resi pembayaran tiap pasien. Menambah tanggal periksa dan tanggal cetak (admin)
 Benerin textarea yang ada tab-nya. "Keluhan" di tambah pemeriksaan (dokter), "Alamat" di tambah data pasien (admin)
 
-====================================
-PR - Mayor
+29-07-2022
 Tambah resep obat masih belum fix (dokter)
 Menampilkan total pembayaran di "master laporan -> laporan data pembayaran" (admin)
+
+====================================
+PR - Mayor
+Status resi yang sudah di cetak admin tidak bisa diedit lagi sama dokter
 
 ------------------------------------
 PR - Minor (Jangka panjang)
 Ubah password (set minimal password), update profile
+Ganti template biar eye-catching
 Import export data pasien ke excell
-Generate report pembayaran tiap awal bulan
-Halaman login tidak perlu memilih. Langsung masukin username password
+Halaman login tidak perlu memilih sebagai apa. Langsung masukin username password
