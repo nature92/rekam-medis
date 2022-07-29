@@ -54,10 +54,11 @@ class Resep_obat extends CI_Controller {
 		$data['resep1'] = $this->Resep_model->tampil();
 		$data['periksa'] = $this->Pemeriksaan_model->getPemeriksaan();
 		$data['aturan'] = $this->db->query("SELECT nama_aturan FROM aturan_pakai ")->result();
-		$data['resep'] = $this->db->query(" SELECT * FROM detail_resep 
-											JOIN obat on detail_resep.id_obat = obat.id_obat 
-											left join resep on resep.kd_resep = detail_resep.kd_resep
-											WHERE detail_resep.kd_resep='$koderesep'")->result();
+		// $data['resep'] = $this->db->query(" SELECT * FROM detail_resep 
+											// JOIN obat on detail_resep.id_obat = obat.id_obat 
+											// left join resep on resep.kd_resep = detail_resep.kd_resep
+											// WHERE detail_resep.kd_resep='$koderesep'")->result();
+		$data['resep'] = $this->db->query(" SELECT * FROM detail_resep JOIN obat on detail_resep.id_obat = obat.id_obat left join resep on resep.kd_resep = detail_resep.kd_resep WHERE resep.id_pemeriksaan='".$id_periksa."'")->result();
 		$data['subtotal'] = $this->Resep_model->hitungjumlah('detail_resep', ['kd_resep' => $this->M_id->buat_kode_resep()]);
 		$data['dokter'] = $this->db->get_where('dokter',['username' => $this->session->userdata('username')])->row_array();
 		$this->load->view('templates/home_header', $judul);

@@ -53,7 +53,8 @@ class M_id extends CI_Model {
 		  if($query->num_rows() <> 0){      
 		   //jika kode ternyata sudah ada.      
 		   $data = $query->row();      
-		   $kode = intval($data->kode) + 1;    
+		   // $kode = intval($data->kode) + 1; //asli   
+		   $kode = intval($data->kode);    
 		  }
 		  else {      
 		   //jika kode belum ada      
