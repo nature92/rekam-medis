@@ -151,7 +151,7 @@ class Pemeriksaan_model extends CI_Model {
 					FROM `pemeriksaan`
 					LEFT JOIN `pasien`
 					ON `pasien`.`kd_rm`=`pemeriksaan`.`kd_rm`
-					ORDER BY `pemeriksaan`.`tanggal`, `pemeriksaan`.`id_periksa` DESC ";
+					ORDER BY  `pemeriksaan`.`id_periksa` DESC ";
         $pemeriksaan = $this->db->query($query)->result_array();
         return $pemeriksaan;
   	}
