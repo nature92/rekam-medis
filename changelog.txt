@@ -16,12 +16,9 @@ Update stok obat belum ada di ubah data obat dan tambah obat baru (apoteker)
 27-07-2022
 Tambah text area "terapi" di menu rekam medis dibawah tindakan (admin)
 Benerin textarea yang ada tab-nya. "Keluhan" di tambah pemeriksaan (dokter), "Alamat" di tambah data pasien (admin)
-Menampilkan total pembayaran di "master laporan -> laporan data pembayaran" (admin)
-Tambah resep obat masih belum fix (dokter)
 
 28-07-2022
 Cetak resi pembayaran tiap pasien. Menambah tanggal periksa dan tanggal cetak (admin)
-Benerin textarea yang ada tab-nya. "Keluhan" di tambah pemeriksaan (dokter), "Alamat" di tambah data pasien (admin)
 
 29-07-2022
 Tambah resep obat masih belum fix (dokter)
