@@ -15,12 +15,27 @@ Update stok obat belum ada di ubah data obat dan tambah obat baru (apoteker)
 
 27-07-2022
 Tambah text area "terapi" di menu rekam medis dibawah tindakan (admin)
+Benerin textarea yang ada tab-nya. "Keluhan" di tambah pemeriksaan (dokter), "Alamat" di tambah data pasien (admin)
+Menampilkan total pembayaran di "master laporan -> laporan data pembayaran" (admin)
+Tambah resep obat masih belum fix (dokter)
 
 28-07-2022
 Cetak resi pembayaran tiap pasien. Menambah tanggal periksa dan tanggal cetak (admin)
 Benerin textarea yang ada tab-nya. "Keluhan" di tambah pemeriksaan (dokter), "Alamat" di tambah data pasien (admin)
 
+<<<<<<< HEAD:changelog.txt
 29-07-2022
+=======
+====================================
+PR - Mayor
+<<<<<<< HEAD
+Cetak resi pembayaran tiap pasien. Menambah tombol cetak di menu laporan pembayaran (admin) - ??
+
+------------------------------------
+PR - Minor (Jangka panjang)
+Ubah password (admin-->belum dikasih hash)
+=======
+>>>>>>> 2714572abb82f0acd04102cb88b3f980a6a4e454:application/changelog.txt
 Tambah resep obat masih belum fix (dokter)
 Menampilkan total pembayaran di "master laporan -> laporan data pembayaran" (admin)
 
@@ -31,6 +46,10 @@ Status resi yang sudah di cetak admin tidak bisa diedit lagi sama dokter
 ------------------------------------
 PR - Minor (Jangka panjang)
 Ubah password (set minimal password), update profile
+<<<<<<< HEAD:changelog.txt
 Ganti template biar eye-catching
+=======
+>>>>>>> 342f9bb07d84c663b20467021b931967ec436391
+>>>>>>> 2714572abb82f0acd04102cb88b3f980a6a4e454:application/changelog.txt
 Import export data pasien ke excell
 Halaman login tidak perlu memilih sebagai apa. Langsung masukin username password

@@ -291,11 +291,16 @@ class Resep_model extends CI_Model {
 		return $query = $this->db->get()->result_array();
 		
 
-  	}        
-
-
+  	}
  
-
+	public function updateResep($kd_resep, $subtotal, $tanggal_resep) {
+		$data = [
+					'subtotal' => $subtotal,
+					'tanggal_resep' => $tanggal_resep
+				];
+		$this->db->where('kd_resep', $kd_resep);
+		$this->db->update('resep', $data);
+	}
 
 
 }

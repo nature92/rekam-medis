@@ -40,6 +40,7 @@ $pdf->Cell(10, 0.8, 'TINDAKAN', 1, 0, 'C');
 $pdf->Cell(3, 0.8, 'TOTAL BAYAR', 1, 0, 'C');
 $pdf->ln();
 
+$jumlah  = 0;
 if( ! empty($pembayaran)){
         $no = 1;
         foreach($pembayaran as $data){
@@ -52,8 +53,14 @@ if( ! empty($pembayaran)){
             $pdf->Cell(10, 0.6, $data->tindakan,1, 0, 'L');
             $pdf->Cell(3, 0.6,  'Rp. '.number_format($data->totalbayar,0,',','.'),1, 0, 'C');
             $pdf->ln();
+			$jumlah+= $data->totalbayar;
         }
     }
+
+$pdf->SetFont('Arial','B',10);
+$pdf->Cell(25, 0.8, 'TOTAL PEMBAYARAN', 1, 0, 'C');
+$pdf->Cell(3, 0.8,  'Rp. '.number_format($jumlah,0,',','.'),1, 0, 'C');
+$pdf->ln();
 
 $pdf->Output("Laporan pembayaran.pdf","I");
 ?>

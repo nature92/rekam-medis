@@ -90,7 +90,15 @@ class Pemeriksaan extends CI_Controller {
 						'tanggal' => $tanggal,
 						'id_dokter' => $id_dokter['id_dokter']
 					);
+		$kd_resep = $this->Pemeriksaan_model->getLastKdResep();
+		// $kd_resep = (int) $last + 1;
+		$dataresep = array(
+						'id_pemeriksaan' => $id_periksa,
+						'id_dokter' => $id_dokter['id_dokter'],
+						'kd_resep' => $kd_resep
+					);
 		$this->Pemeriksaan_model->input_data($data, 'pemeriksaan');
+		$this->Pemeriksaan_model->input_data($dataresep, 'resep');
 		redirect('pemeriksaan/periksa/'.$kd_rm,'');
 	}
 	
