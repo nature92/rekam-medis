@@ -155,5 +155,13 @@ class Pemeriksaan_model extends CI_Model {
         $pemeriksaan = $this->db->query($query)->result_array();
         return $pemeriksaan;
   	}
+	
+	public function getLastKdResep(){
+            $this->db->select_max('kd_resep');
+            $this->db->from('resep');
+            $query = $this->db->get();
+            $result = $query->row();
+            return $result->kd_resep;
+    }
 
 }
