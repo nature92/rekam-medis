@@ -97,7 +97,7 @@
 													<th>Stok Keluar</th> 
 													<th>Total Stok</th>  
 													<th>Total</th>          
-													<th>Aksi</th>
+													<th>Kode Pemeriksaan</th>
 													<th>Aksi</th>
 												</tr>
 											</thead>
