@@ -14,7 +14,7 @@
 		'git reset --hard HEAD',
 		'git pull --no-edit',
 		'git status',
-		'date'
+		'date',
 		'lsb_release -a',
 //		'git submodule update',
 //		'git submodule status',
