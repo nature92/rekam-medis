@@ -15,7 +15,7 @@
 		'git pull --no-edit',
 		'git status',
 		'date',
-		'lsb_release -a',
+		'uname -a',
 //		'git submodule update',
 //		'git submodule status',
 	);
