@@ -32,7 +32,7 @@ $pdf->ln(1);
 $pdf->SetFont('Arial','B',10);
 $pdf->Cell(1, 0.8, 'NO', 1, 0, 'C');
 $pdf->Cell(3.5, 0.8, 'TANGGAL', 1, 0, 'C');
-$pdf->Cell(2.5, 0.8, 'KODE PERIKSA', 1, 0, 'C');
+$pdf->Cell(2.5, 0.8, 'KD PERIKSA', 1, 0, 'C');
 $pdf->Cell(6, 0.8, 'KELUHAN', 1, 0, 'C');
 $pdf->Cell(6, 0.8, 'DIAGNOSIS', 1, 0, 'C');
 $pdf->Cell(10, 0.8, 'TINDAKAN', 1, 0, 'C');
@@ -45,7 +45,7 @@ if( ! empty($pemeriksaan)){
             $pdf->Cell(1, 0.6, $no++ , 1, 0, 'C');
             $pdf->Cell(3.5, 0.6, date('d-m-Y', strtotime($data['tanggal'])),1, 0, 'C');
             $pdf->Cell(2.5, 0.6, $data['id_periksa'],1, 0, 'L');
-            $pdf->Cell(6, 0.6, $data['keluhan'],1, 0, 'L');
+            $pdf->MultiCell(6, 0.6, $data['keluhan'],1, 0, 'L');
             $pdf->Cell(6, 0.6, $data['diagnosa'],1, 0, 'L');
             $pdf->Cell(10, 0.6, $data['tindakan'],1, 0, 'L');
             $pdf->ln();

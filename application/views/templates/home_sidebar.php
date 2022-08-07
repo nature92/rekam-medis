@@ -57,6 +57,8 @@
 						<li><a href="<?= base_url('data_dokter');?>"><i class="fa fa-circle-o"></i> Data Dokter</a></li>
 						<li><a href="<?= base_url('data_admin');?>"><i class="fa fa-circle-o"></i> Data Admin</a></li>
 						<li><a href="<?= base_url('data_apoteker');?>"><i class="fa fa-circle-o"></i> Data Apoteker</a></li>
+						<li><a href="<?= base_url('tarif');?>"><i class="fa fa-circle-o"></i><span>Data Tarif [NEW]</span></a></li>
+						<li><a href="<?= base_url('pemeriksaan');?>"><i class="fa fa-circle-o"></i><span>Data Pemeriksaan [NEW]</span></a></li>
 					</ul>
 				</li>
 				<?php } ?>
@@ -72,11 +74,6 @@
 					<a href="<?= base_url('resep_obat');?>">
 						<i class=" fa fa-fw fa-flask"></i><span>Resep Obat</span>
 						<span class="pull-right-container"></span>
-					</a>
-				</li>
-				<li>
-					<a href="<?= base_url('tarif');?>">
-						<i class="fa fa-fw fa-dollar"></i><span>Tarif</span>
 					</a>
 				</li>
 				<?php } ?>

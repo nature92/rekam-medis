@@ -28,22 +28,24 @@ $pdf->Cell(5,0.6,"Di cetak pada : ".date("d/m/Y"),0,0,'C');
 $pdf->ln(1);
 
 $pdf->SetFont('Arial','B',10);
-$pdf->Cell(3.5, 0.8, 'KODE RM', 1, 0, 'C');
+$pdf->Cell(2.6, 0.8, 'KODE RM', 1, 0, 'C');
 $pdf->Cell(5, 0.8, 'NAMA', 1, 0, 'C');
-$pdf->Cell(4, 0.8, 'JENIS KELAMIN', 1, 0, 'C');
-$pdf->Cell(4, 0.8, 'TAMPAT LAHIR', 1, 0, 'C');
-$pdf->Cell(4, 0.8, 'TANGGAL LAHIR', 1, 0, 'C');
-$pdf->Cell(4, 0.8, 'ALAMAT', 1, 0, 'C');
+$pdf->Cell(3.2, 0.8, 'JENIS KELAMIN', 1, 0, 'C');
+$pdf->Cell(3.6, 0.8, 'TAMPAT LAHIR', 1, 0, 'C');
+$pdf->Cell(3.2, 0.8, 'TANGGAL LAHIR', 1, 0, 'C');
+$pdf->Cell(3, 0.8, 'BPJS/UMUM', 1, 0, 'C');
+$pdf->Cell(10, 0.8, 'ALAMAT', 1, 0, 'C');
 $pdf->ln();
 
         foreach($pasien as $data){
             $pdf->SetFont('Arial','',10);
-            $pdf->Cell(3.5, 0.6, $data->kd_rm ,1, 0, 'C');
+            $pdf->Cell(2.6, 0.6, $data->kd_rm ,1, 0, 'C');
             $pdf->Cell(5, 0.6, $data->nama_pasien,1, 0, 'C');
-            $pdf->Cell(4, 0.6, $data->jenkel,1, 0, 'C');
-            $pdf->Cell(4, 0.6, $data->tempat_lahir,1, 0, 'C');
-            $pdf->Cell(4, 0.6, $data->tanggal_lahir,1, 0, 'C');
-            $pdf->Cell(4, 0.6, $data->alamat,1, 0, 'C');
+            $pdf->Cell(3.2, 0.6, $data->jenkel,1, 0, 'C');
+            $pdf->Cell(3.6, 0.6, $data->tempat_lahir,1, 0, 'C');
+            $pdf->Cell(3.2, 0.6, $data->tanggal_lahir,1, 0, 'C');
+			$pdf->Cell(3, 0.6, $data->pengobatan, 1, 0, 'C');
+            $pdf->Cell(10, 0.6, $data->alamat,1, 0, 'C');
             $pdf->ln();
         }
 

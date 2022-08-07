@@ -110,7 +110,23 @@ class Pemeriksaan_model extends CI_Model {
 		$this->db->where('pemeriksaan.kd_rm', $kd_rm); 
   		$this->db->order_by('pemeriksaan.id_periksa');   
   		return $query = $this->db->get()->result_array();// Tampilkan data transaksi sesuai tanggal yang diinput oleh user pada filter  
-  	} 
+  	}
+	
+	public function view_by_bulan($bulan){
+  		// $this->db->select('*');
+		// $this->db->from('pemeriksaan');
+		// $this->db->join('pasien', 'pemeriksaan.kd_rm = pasien.kd_rm');
+		// $this->db->where('pemeriksaan.kd_rm', $kd_rm); 
+  		// $this->db->order_by('pemeriksaan.id_periksa');   
+		$sql = $this->db->query("  SELECT * FROM pemeriksaan
+									inner JOIN pasien on pemeriksaan.kd_rm = pasien.kd_rm
+									WHERE month(pemeriksaan.tanggal)='" . $bulan . "'
+									ORDER BY pemeriksaan.tanggal ASC
+								");
+		return $sql->result_array();
+  		// return $query = $this->db->get()->result_array();// Tampilkan data transaksi sesuai bulan
+  	}
+	
   	public function view_by_kd_pasien($kd_pasien){
   		$this->db->select('*');    
 		$this->db->from('pasien');
@@ -158,23 +174,22 @@ class Pemeriksaan_model extends CI_Model {
 	
 	public function getLastKdResep(){
         $this->db->select('RIGHT(resep.kd_resep,4) as kode', FALSE);
-		  $this->db->order_by('kd_resep','DESC');    
-		  $this->db->limit(1);    
-		  $query = $this->db->get('resep');      //cek dulu apakah ada sudah ada kode di tabel.    
-		  if($query->num_rows() <> 0){      
-		   //jika kode ternyata sudah ada.      
-		   $data = $query->row();      
-		   $kode = intval($data->kode) + 1; //asli   
-		   // $kode = intval($data->kode);    
-		  }
-		  else {      
-		   //jika kode belum ada      
-		   $kode = 1;    
-		  }
-		  $tgl=date('y');
-		  $kodemax=str_pad($kode,4,"0",STR_PAD_LEFT);//angka 3 meunjukan jumlah digit angka 0
-		  $kodejadi="RSP".$tgl.$kodemax; //hasilnya KLS-1026-001 dst. 
-		  return $kodejadi;
+		$this->db->order_by('kd_resep','DESC');    
+		$this->db->limit(1);    
+		$query = $this->db->get('resep');      //cek dulu apakah ada sudah ada kode di tabel.    
+		if($query->num_rows() <> 0){      
+			//jika kode ternyata sudah ada.      
+			$data = $query->row();      
+			$kode = intval($data->kode) + 1; //asli   
+			// $kode = intval($data->kode);    
+		} else {      
+			//jika kode belum ada      
+			$kode = 1;    
+		}
+		$tgl=date('y');
+		$kodemax=str_pad($kode,4,"0",STR_PAD_LEFT);//angka 3 meunjukan jumlah digit angka 0
+		$kodejadi="RSP".$tgl.$kodemax; //hasilnya KLS-1026-001 dst. 
+		return $kodejadi;
     }
 
 }

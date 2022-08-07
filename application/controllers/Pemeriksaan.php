@@ -112,24 +112,29 @@ class Pemeriksaan extends CI_Controller {
 	function laporan(){
 		if(isset($_GET['filter']) && ! empty($_GET['filter'])){
 			$filter = $_GET['filter'];
-			if($filter == '1'){               
-				$tanggal1 = $_GET['tanggal'];  
-				$tanggal2 = $_GET['tanggal2'];                               
-				$ket = 'Data Rekam Medis dari Tanggal '.date('d-m-y', strtotime($tanggal1)).' - '.date('d-m-y', strtotime($tanggal2));                
-				$url_cetak = 'pemeriksaan/cetak1?tanggal1='.$tanggal1.'&tanggal2='.$tanggal2.'';                
-				$pemeriksaan = $this->Pemeriksaan_model->view_by_date($tanggal1,$tanggal2);             
-			}else if ($filter == '2'){                
-				$kd_rm = $_GET['kd_rm'];                                              
-				$ket = 'Data Rekam Medis ';                
-				$url_cetak = 'pemeriksaan/cetak2?&kd_rm='.$kd_rm;                
-				$pemeriksaan = $this->Pemeriksaan_model->view_by_kd_rm($kd_rm);             
+			if($filter == '1'){
+				$tanggal1 = $_GET['tanggal'];
+				$tanggal2 = $_GET['tanggal2'];
+				$ket = 'Data Rekam Medis dari Tanggal '.date('d-m-y', strtotime($tanggal1)).' - '.date('d-m-y', strtotime($tanggal2));
+				$url_cetak = 'pemeriksaan/cetak1?tanggal1='.$tanggal1.'&tanggal2='.$tanggal2.'';
+				$pemeriksaan = $this->Pemeriksaan_model->view_by_date($tanggal1,$tanggal2);
+			} else if ($filter == '2'){
+				$kd_rm = $_GET['kd_rm'];
+				$ket = 'Data Rekam Medis ';
+				$url_cetak = 'pemeriksaan/cetak2?&kd_rm='.$kd_rm;
+				$pemeriksaan = $this->Pemeriksaan_model->view_by_kd_rm($kd_rm);
+			} else if($filter == '3'){
+				// $kelas = $_GET['kd_pasien'];
+				// $ket = 'Data Pasien '.$pasien;
+				// $url_cetak = 'pemeriksaan/cetak3?&pasien='.$pasien;
+				// $pasien = $this->Pemeriksaan_model->view_by_kd_pasien($pasien)->result();
+				
+				$bulan = $_GET['bulanfilter'];
+				// $ket = 'Data Pasien Per Bulan '.$bulan;
+				$ket = 'Data Pasien Per Bulan ';
+				$url_cetak = 'pemeriksaan/cetak3?&bulan='.$bulan;
+				$pemeriksaan = $this->Pemeriksaan_model->view_by_bulan($bulan);
 			}
-			// else if($filter == '3'){                
-			// $kelas = $_GET['kd_pasien'];                                                
-			// $ket = 'Data Pasien '.$pasien;                
-			// $url_cetak = 'pemeriksaan/cetak3?&pasien='.$pasien;                
-			// $pasien = $this->Pemeriksaan_model->view_by_kd_pasien($pasien)->result();             
-			// }
 		} else {
 			$ket = 'Semua Data Rekam Medis';
 			$url_cetak = 'pemeriksaan/cetak';
@@ -185,5 +190,19 @@ class Pemeriksaan extends CI_Controller {
 	  	$data['ket'] = $ket; 
 	  	$data['alamat'] = $alamat;
 	  	$this->load->view('pemeriksaan/preview1', $data);
+	}
+	
+	public function cetak3(){
+	  	$bulan = $_GET['bulan'];
+	  	// $data['nama_pasien'] = $this->db->query("SELECT nama_pasien FROM pasien WHERE kd_rm = '$kd_rm'")->result();
+		// $ket = 'Cetak Per Bulan   '   .$kd_rm  ;     
+		$ket = 'Cetak Per Bulan' ;     
+		$alamat = 'Jl. Raya Purwakarta No.21, Tagogapu, Kec. Padalarang, Kabupaten Bandung Barat';                      
+	  	ob_start();   
+	  	require('assets/pdf/fpdf.php');  
+	  	$data['pemeriksaan'] = $this->Pemeriksaan_model->view_by_bulan($bulan); 
+	  	$data['ket'] = $ket; 
+	  	$data['alamat'] = $alamat;
+	  	$this->load->view('pemeriksaan/preview', $data);
 	}
 }

@@ -1,87 +1,64 @@
 <?php 
-
 class Pasien_model extends CI_Model {
-
-	public function getAllPasien()
-	{
-		return $this->db->query('SELECT *
-		 FROM  `pasien` ORDER BY kd_rm DESC');
-
+	public function getAllPasien(){
+		return $this->db->query('SELECT * FROM  `pasien` ORDER BY kd_rm DESC');
 	}
 
-	function tambah_data() 
-	{
+	function tambah_data(){
 		$data = [
-		'kd_rm' => $this->input->post('kd_rm'),
-		'nama_pasien' => $this->input->post('nama_pasien'),
-		'jenkel' => $this->input->post('jenkel'),
-		'tempat_lahir' => $this->input->post('tempat_lahir'),
-		'tanggal_lahir' => $this->input->post('tanggal_lahir'),
-		'alamat' => $this->input->post('alamat'),
-		'pengobatan' => $this->input->post('pengobatan'),
-		'no_bpjs' => $this->input->post('no_bpjs'),		
-		'telp' => $this->input->post('telp')
-
-	];
-		
+					'kd_rm' => $this->input->post('kd_rm'),
+					'nama_pasien' => $this->input->post('nama_pasien'),
+					'jenkel' => $this->input->post('jenkel'),
+					'tempat_lahir' => $this->input->post('tempat_lahir'),
+					'tanggal_lahir' => $this->input->post('tanggal_lahir'),
+					'alamat' => $this->input->post('alamat'),
+					'pengobatan' => $this->input->post('pengobatan'),
+					'no_bpjs' => $this->input->post('no_bpjs'),
+					'telp' => $this->input->post('telp')
+				];
 		$this->db->insert('pasien', $data);
 	}
 
-	public function hapus_data($kd_rm)
-	{
+	public function hapus_data($kd_rm){
 		$this->db->where('kd_rm', $kd_rm);
 		$this->db->delete('pasien');		
 	}
 
-	public function getPasienById($kd_rm)
-	{
+	public function getPasienById($kd_rm){
 		return $this->db->get_where('pasien', ['kd_rm' => $kd_rm ])->row_array();
 	}
 
-	public function getPasienByTanggal()
-	{
-		$query = "SELECT `pasien`.`tanggal_lahir`
-		          FROM  `pasien` 
-		          ORDER BY `tanggal_lahir` DESC ";
+	public function getPasienByTanggal(){
+		$query = "SELECT `pasien`.`tanggal_lahir` FROM  `pasien` ORDER BY `tanggal_lahir` DESC ";
 		$tanggal = $this->db->query($query)->result_array();
         return $tanggal;
-
 	}
 
-	public function getAllPasienSortKd()
-	{
-
+	public function getAllPasienSortKd(){
 		// $query = "SELECT `pasien`.`kd_pasien`
 		// FROM `rekam_medis`
 		// LEFT JOIN `pasien`
 		// ON `pasien`.`id_pasien`=`rekam_medis`.`id_pasien`
 		// ORDER BY `rekam_medis`.`id_rm`";
 		// $pasien = $this->db->query($query)->result_array();
-  //       return $pasien;
-
-        $query = "SELECT `pasien`.`kd_rm` , `pasien`.`nama_pasien`
-		 FROM  `pasien` ";
+		// return $pasien;
+        $query = "SELECT `pasien`.`kd_rm` , `pasien`.`nama_pasien` FROM  `pasien` ";
 		$pasien = $this->db->query($query)->result_array();
         return $pasien;
-
-    
-		
 	}
 	
-	public function ubah_data($kd_rm) 
-	{
+	public function ubah_data($kd_rm) {
 		$data = [
-		'nama_pasien' => $this->input->post('nama_pasien'),
-		'jenkel' => $this->input->post('jenkel'),
-		'tempat_lahir' => $this->input->post('tempat_lahir'),
-		'tanggal_lahir' => $this->input->post('tanggal_lahir'),
-		'alamat' => $this->input->post('alamat'),
-		'pengobatan' => $this->input->post('pengobatan'),
-		'no_bpjs' => $this->input->post('no_bpjs'),
-		'telp' => $this->input->post('telp')
-
-	];
-		$this->db->where('kd_rm', $this->input->post('kd_rm') );
+					'nama_pasien' => $this->input->post('nama_pasien'),
+					'jenkel' => $this->input->post('jenkel'),
+					'tempat_lahir' => $this->input->post('tempat_lahir'),
+					'tanggal_lahir' => $this->input->post('tanggal_lahir'),
+					'alamat' => $this->input->post('alamat'),
+					'pengobatan' => $this->input->post('pengobatan'),
+					'no_bpjs' => $this->input->post('no_bpjs'),
+					'telp' => $this->input->post('telp')
+				];
+		$this->db->where('kd_rm', $kd_rm);
 		$this->db->update('pasien', $data);
 	}
 
@@ -89,19 +66,15 @@ class Pasien_model extends CI_Model {
 		$query=$this->db->get('pasien');
 		if($query->num_rows()>0){
 			return $query->num_rows();
-		}
-		else{
+		} else {
 			return 0;
 		}
 	}
-
-
-
+	
   	public function kd_rm(){        
   		$this->db->select('*');    
 		$this->db->from('pasien');     
   		return $query = $this->db->get()->result();
- 
   	}  
 
   	public function kd_pasien(){
@@ -110,14 +83,14 @@ class Pasien_model extends CI_Model {
   		return $query = $this->db->get()->result();  
   	}
 
- 
   	public function view_by_kd_rm($kd_rm){
   		$this->db->select('*');    
 		$this->db->from('pasien');
 		$this->db->where('pasien.kd_rm', $kd_rm); 
   		$this->db->order_by('pasien.kd_rm');   
   		return $query = $this->db->get()->result_array();// Tampilkan data transaksi sesuai tanggal yang diinput oleh user pada filter  
-  	} 
+  	}
+	
   	public function view_by_kd_pasien($kd_rm){
   		$this->db->select('*');    
 		$this->db->from('pasien');
@@ -139,19 +112,14 @@ class Pasien_model extends CI_Model {
   		return $query = $this->db->get(); 
   	}
 
-  	function view_all(){  
-
+  	function view_all(){
   		$this->db->select('*');    
 		$this->db->from('pasien');     
   		return $query = $this->db->get()->result_array();
   	}
 	
 	public function cekPeriksaRekamMedis($kd_rm){
-        $sql = $this->db->query(
-            "	select id_periksa
-				from pemeriksaan 
-				where kd_rm = '" . $kd_rm . "'
-            ");
+        $sql = $this->db->query("select id_periksa from pemeriksaan where kd_rm = '" . $kd_rm . "' ");
         $num = $sql->num_rows();
         if ($num > 0) {
             $res = $sql->row();
@@ -159,13 +127,5 @@ class Pasien_model extends CI_Model {
         } else {
             return 0;
         }
-    }
-
-
- 
-  }
-
-
-
-
-
+    } 
+}
