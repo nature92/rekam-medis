@@ -76,7 +76,7 @@ class Pemeriksaan extends CI_Controller {
 		$id_periksa = $this->input->post('id_periksa');
 		$keluhan = $this->input->post('keluhan');
 		$diagnosa = $this->input->post('diagnosa');
-		$terapi = $this->input->post('terapi');
+		// $terapi = $this->input->post('terapi');
 		$tindakan = implode(' , ', $this->input->post('tindakan',TRUE)) ;
 		$tanggal = $this->input->post('tanggal');
 		$id_dokter = $this->db->query("SELECT id_dokter FROM dokter WHERE username='$username'")->row_array();
@@ -85,7 +85,7 @@ class Pemeriksaan extends CI_Controller {
 						'id_periksa' => $id_periksa,
 						'keluhan' => $keluhan,
 						'diagnosa' => $diagnosa,
-						'terapi' => $terapi,
+						// 'terapi' => $terapi,
 						'tindakan' => $tindakan,
 						'tanggal' => $tanggal,
 						'id_dokter' => $id_dokter['id_dokter']
