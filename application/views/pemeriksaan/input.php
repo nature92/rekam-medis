@@ -20,13 +20,13 @@
 					<label for="keluhan" class="col-sm-2 col-form-label">Keluhan</label> 
 					<div class="col-sm-4"> 
 						<!--<textarea class="form-control" id="keluhan" name="keluhan" rows="2" required="keluhan"></textarea> -->
-						<textarea id="keluhan" name="keluhan" rows="3" cols="51" class="form-control" required="keluhan"> </textarea>
+						<textarea id="keluhan" name="keluhan" rows="3" cols="51" class="form-control"> </textarea>
 					</div>  
 					<label for="diagnosa" class="col-sm-2 col-form-label">Diagnosis</label>
 					<div class="col-sm-4">
 						<!--<textarea class="form-control" id="diagnosa" name="diagnosa" rows="2" required="diagnosa">
 						</textarea> -->
-						<textarea id="diagnosa" name="diagnosa" rows="3" cols="51" required="diagnosa" class="form-control"> </textarea>
+						<textarea id="diagnosa" name="diagnosa" rows="3" cols="51" class="form-control"> </textarea>
 					</div>
 				</div>
 				<div class="form-group row">
