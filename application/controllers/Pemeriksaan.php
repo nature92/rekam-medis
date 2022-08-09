@@ -88,7 +88,15 @@ class Pemeriksaan extends CI_Controller {
 						// 'terapi' => $terapi,
 						'tindakan' => $tindakan,
 						'tanggal' => $tanggal,
-						'id_dokter' => $id_dokter['id_dokter']
+						'id_dokter' => $id_dokter['id_dokter'],
+						'tinggi_badan' => $this->input->post('tinggi_badan'),
+						'berat_badan' => $this->input->post('berat_badan'),
+						'lingkar_perut' => $this->input->post('lingkar_perut'),
+						'imt' => $this->input->post('imt'),
+						'sistole' => $this->input->post('sistole'),
+						'diastole' => $this->input->post('diastole'),
+						'respiratory_rate' => $this->input->post('respiratory_rate'),
+						'heartrate' => $this->input->post('heartrate'),
 					);
 		$kd_resep = $this->Pemeriksaan_model->getLastKdResep();
 		// $kd_resep = (int) $last + 1;
