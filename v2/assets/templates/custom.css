@@ -1,0 +1,295 @@
+/* Global */
+* {
+  max-width: 100vw;
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 5;
+}
+
+.modal-backdrop {
+  z-index: 100 !important;
+}
+
+.modal {
+  z-index: 200 !important;
+}
+
+.modal.show {
+  overflow: auto !important;
+}
+
+table th {
+  text-align: center;
+}
+
+.DTFC_ScrollWrapper {
+  margin-bottom: 15px;
+}
+
+.label-box {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.no-a,
+.no-a:hover {
+  text-decoration: none;
+}
+
+/* Navbar */
+.logo-src {
+  background-size: 97px !important;
+}
+
+i.icon-round {
+  border-radius: 100px;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+  font-size: 18px !important;
+}
+
+.scrollbar-sidebar {
+  padding-bottom: 30px;
+}
+
+.scrollbar-sidebar::-webkit-scrollbar {
+  width: 8px;
+  background: #f1f1f1;
+}
+
+.scrollbar-sidebar::-webkit-scrollbar-thumb {
+  background-color: rgb(208, 212, 221);
+}
+
+.profile-responsive {
+  display: none;
+}
+
+/* Sidebar */
+.app-sidebar__parent {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.app-sidebar__caret-icon {
+  display: flex;
+  align-items: center;
+  color: rgb(206, 206, 206);
+}
+
+.mm-active > a > .app-sidebar__parent > .app-sidebar__caret-icon {
+  color: dodgerblue;
+  transform: rotate(180deg);
+}
+
+.mm-active .app-sidebar__parent-title {
+  color: dodgerblue;
+}
+
+.app-sidebar__round-icon {
+  font-size: 5px;
+}
+
+.app-sidebar__active-children {
+  background-color: rgba(30, 143, 255, 0.068);
+}
+
+.app-sidebar__active-children span,
+.app-sidebar__active-children i {
+  color: dodgerblue !important;
+}
+
+.form-control::placeholder {
+  color: rgb(182, 182, 182);
+  font-size: 14px;
+}
+
+.form-control:disabled {
+  background-color: rgb(247, 248, 255);
+}
+
+.popover-label {
+  text-decoration: underline dodgerblue;
+}
+
+.popover-label::after {
+  content: "?";
+  opacity: 0.6;
+  font-size: 10px;
+  margin-left: 2px;
+  margin-right: 4px;
+}
+
+@media (max-width: 1320px) {
+  .profile-responsive {
+    display: inline;
+  }
+}
+
+/* Card */
+.icon-card {
+  margin-right: 10px;
+}
+
+.icon-card i {
+  font-size: 40px;
+}
+
+.icon-card.light {
+  color: #eee;
+}
+
+.icon-card.primary {
+  color: #3f6ad8;
+}
+
+/* Table */
+.thead-accent-primary {
+  background-color: #3f6ad8;
+  color: white;
+  border-color: #e9ecef;
+}
+
+table.nowrap td,
+table.nowrap th {
+  white-space: nowrap;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* Auto Complete */
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative;
+  display: inline-block;
+}
+.autocomplete-items {
+  width: 90%;
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 5%;
+  right: 0;
+}
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #e9e9e9;
+}
+.autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: DodgerBlue !important;
+  color: #ffffff;
+}
+
+/* Image Style */
+.img-master {
+  display: block;
+  max-width: 50%;
+  max-height: 100px;
+}
+
+img.bank-logo {
+  max-width: 100px;
+  max-height: 50px;
+}
+
+/* Input */
+.input-error {
+  color: red;
+  font-style: italic;
+}
+
+.hr-input-modal {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Master */
+.table-master th,
+.table-master td {
+  white-space: nowrap;
+}
+
+/* Saldo */
+.rekening-popover {
+  cursor: pointer;
+}
+
+.editable td {
+  background-color: rgb(234, 255, 233);
+  cursor: pointer;
+}
+
+.editable:hover > td {
+  background-color: rgb(235, 235, 255);
+}
+
+.hidden-saldo {
+  display: none;
+}
+
+.saldo-td {
+  cursor: pointer;
+}
+
+.tab-bank {
+  margin-bottom: 10px;
+  padding: 15px;
+}
+
+.item-tab-bank {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 3px solid transparent;
+  background: linear-gradient(rgba(235, 235, 235, 0.2) 50%, rgba(230, 227, 255, 0.4));
+}
+
+.item-tab-bank:hover {
+  border-bottom: 3px solid #3f6ad836;
+}
+
+.item-tab-bank.active {
+  border-bottom: 3px solid #3f6ad8;
+}
+
+/* SCF */
+
+.scf-status {
+  color: white;
+  padding: 1px 5px 2px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.scf-status-paid {
+  background-color: rgb(71, 223, 71);
+}
+
+.scf-status-not-paid {
+  background-color: rgb(223, 71, 71);
+}

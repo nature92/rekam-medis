@@ -1,0 +1,292 @@
+@font-face {
+  font-family: "raleway";
+  src: url("../../assets/fonts/Raleway/Raleway.ttf");
+}
+
+.split {
+  padding: 10px;
+}
+
+.main-container {
+  margin-top: -30px;
+}
+
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-title {
+  font-family: raleway;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #011627;
+}
+
+.dropdown .text {
+  margin-right: 25px;
+  margin-top: 5px;
+  text-align: right;
+}
+
+.text h5,
+.text p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.text h5 {
+  margin-bottom: -5px;
+  font-weight: 500;
+}
+
+.dropdown-menu {
+  width: 200px;
+  background-color: #011627;
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  padding: 20px 0 0 0;
+}
+
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 50px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  z-index: 5;
+}
+
+.profile-pic span {
+  font-size: 60px;
+  font-weight: 700;
+}
+
+.profile-button {
+  width: 100%;
+  border-bottom-left-radius: 9px;
+  border-bottom-right-radius: 9px;
+  margin-top: -50px;
+  padding: 60px 0 10px;
+  background-color: #fff;
+}
+
+.profile-button a {
+  padding: 5px 20px;
+}
+
+.profile-button hr {
+  margin-bottom: 10px;
+}
+
+.card-content {
+  padding: 10px 20px 15px;
+  border-radius: 15px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  cursor: pointer;
+}
+
+.card-content h2,
+.card-content p {
+  margin-top: -10px;
+  margin-bottom: 0px;
+}
+
+.title,
+.content,
+.caption {
+  font-family: "raleway";
+  color: #1d2225;
+}
+
+.card-content .title {
+  font-weight: 600;
+}
+
+.card-content .content {
+  font-weight: 600;
+  font-size: 70px;
+  margin-top: -10px;
+  text-align: right;
+}
+
+.card-content .caption {
+  text-align: right;
+  margin-top: -36px;
+  font-size: 20px;
+}
+
+.card-icon {
+  font-size: 60px;
+}
+
+.modal-input select,
+.modal-input textarea,
+.modal-input input {
+  background-color: transparent;
+  font-size: 14px;
+  border: 1px solid #0c4675;
+}
+
+.modal-input textarea {
+  min-height: 100px;
+}
+
+.modal-input input:disabled,
+.modal-input textarea:disabled,
+.modal-input select:disabled {
+  background-color: transparent;
+  border: 1px solid #bbb;
+}
+
+.input-error {
+  font-style: italic;
+  color: red;
+}
+
+.card-body input,
+.card-body textarea,
+.card-body select {
+  border: 1px solid #bbb;
+}
+
+.dataTables_filter input {
+  max-width: 200px;
+  width: 50px;
+}
+
+.loader {
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+table th {
+  text-align: center;
+}
+
+.badge-create {
+  background-color: rgb(238, 255, 238);
+}
+
+.badge-delete,
+.badge-flag {
+  background-color: rgb(255, 236, 236);
+}
+
+.badge-update {
+  background-color: rgb(230, 230, 255);
+}
+
+.currency-separator {
+  display: flex;
+  justify-content: space-between;
+}
+
+.custom-dark {
+  background-color: #011627;
+  color: white;
+}
+
+button.custom-dark:hover {
+  color: grey;
+}
+
+#table thead th {
+  white-space: nowrap;
+}
+
+tr.editable td {
+  cursor: pointer;
+}
+
+tr.editable:hover > td {
+  background-color: rgb(233, 233, 255);
+}
+
+.img-master {
+  display: block;
+  max-width: 50%;
+  max-height: 100px;
+}
+
+img.bank-logo {
+  max-width: 100px;
+  max-height: 50px;
+}
+
+@media (min-width: 1000px) {
+  .content-active {
+    margin-left: 280px;
+  }
+  .content-active .main-container {
+    width: 72vw;
+  }
+}
+
+@media (max-width: 1000px) {
+  .content-active-responsive {
+    margin-left: 280px;
+  }
+  .content-active .main-container {
+    width: 90vw;
+  }
+  .content-active-responsive .main-container {
+    width: 90vw;
+  }
+  .card-icon {
+    font-size: 50px;
+  }
+  .top-title {
+    font-size: 20px;
+    margin-left: 50px;
+  }
+  #sidebarCollapse {
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-body table td {
+    padding: 5px 20px;
+    white-space: nowrap;
+  }
+
+  /* .card-body table th:not(:nth-child(-n + 4)):not(:last-child),
+  .card-body table td:not(:nth-child(-n + 4)):not(:last-child) {
+    display: none;
+  } */
+
+  .res-pad {
+    padding: 0px;
+  }
+
+  .res-fsize {
+    font-size: smaller;
+  }
+
+  .res-border {
+    border: 0px;
+  }
+
+  .res-bg {
+    background-color: transparent;
+  }
+
+  .res-display {
+    display: none !important;
+  }
+}

@@ -1,0 +1,15 @@
+GSBER;GTEXT;
+0001;Business area 0001
+1000;Pusat
+3100;Divisi Senjata
+3200;Divisi Munisi
+3300;Divisi Mijas
+3310;Divisi Alat Berat
+3400;Divisi Mining Service
+3500;Divisi Infras Perhubungan
+3600;Divisi Kendaraan Khusus
+3700;Divisi Peralatan Ind & Jasa
+3800;Dirtekbang (Litbang)
+3900;Divisi Teknologi Informasi
+9999;BA Dummy untuk Eliminasi
+P100;Pusat PEI

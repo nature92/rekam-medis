@@ -1,0 +1,205 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background: linear-gradient(147deg, #011627, #0e3d63, #2f475a);
+  background-size: 600% 600%;
+
+  -webkit-animation: gradientAnimate 15s ease infinite;
+  -moz-animation: gradientAnimate 15s ease infinite;
+  animation: gradientAnimate 15s ease infinite;
+}
+
+@font-face {
+  font-family: "raleway";
+  src: url("../../assets/fonts/Raleway/Raleway.ttf");
+}
+
+@-webkit-keyframes gradientAnimate {
+  0% {
+    background-position: 25% 0%;
+  }
+
+  50% {
+    background-position: 76% 100%;
+  }
+
+  100% {
+    background-position: 25% 0%;
+  }
+}
+
+@-moz-keyframes gradientAnimate {
+  0% {
+    background-position: 25% 0%;
+  }
+
+  50% {
+    background-position: 76% 100%;
+  }
+
+  100% {
+    background-position: 25% 0%;
+  }
+}
+
+@keyframes gradientAnimate {
+  0% {
+    background-position: 25% 0%;
+  }
+
+  50% {
+    background-position: 76% 100%;
+  }
+
+  100% {
+    background-position: 25% 0%;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "raleway";
+}
+
+.container-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  margin-top: -50px;
+  margin-bottom: 20px;
+  background-color: #fafafa;
+  align-self: center;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo img {
+  max-width: 70px;
+}
+
+.container-login .card {
+  display: flex;
+  justify-content: center;
+}
+
+.card-login {
+  width: 500px;
+  padding: 0 80px 50px;
+  border: 0;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.05);
+}
+
+.card-login a,
+.card-login a:hover,
+.card-login a:active {
+  font-size: small;
+  margin-top: 10px;
+  text-decoration: none;
+}
+
+.card-login h2 {
+  margin-bottom: 0;
+  color: #444;
+  font-size: 30px;
+}
+
+.card-login p {
+  font-size: small;
+  color: grey;
+}
+
+.card-login .form-group {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-login .error {
+  border-bottom: 2px solid rgb(243, 65, 65);
+}
+
+.input-login {
+  border: 0;
+  border-radius: 0;
+  width: 95%;
+
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-login,
+.input-login:hover,
+.input-login:focus,
+.input-login:active {
+  background-color: transparent;
+}
+
+.input-login input,
+.input-login input:hover,
+.input-login input:active {
+  border: 0;
+  outline: none;
+  background-color: transparent;
+}
+
+.input-login span {
+  font-weight: bold;
+}
+
+.btn-login {
+  width: 100%;
+  border-radius: 500px;
+}
+
+.container-admin .card {
+  background-color: rgba(7, 36, 59, 0.8);
+}
+
+.container-admin {
+  color: white;
+}
+
+.container-admin h2,
+.container-admin input,
+.container-admin input:focus,
+.container-admin p {
+  color: #fff;
+}
+
+.container-admin ::placeholder {
+  color: #ccc;
+}
+
+.container-admin .btn-login {
+  color: #07243b;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .card-login {
+    padding: 0px 40px 20px;
+  }
+}

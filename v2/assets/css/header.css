@@ -1,0 +1,62 @@
+.topnav {
+	position: fixed;
+	background-color: #fff;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	height: 75px;
+	top: 0;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+	z-index: 5;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+	float: left;
+	display: block;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+	box-sizing: border-box;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+	background-color: #ddd;
+	color: black;
+}
+
+/* Add an active class to highlight the current page */
+.topnav a.active {
+	background-color: #4caf50;
+	color: white;
+}
+
+.topnav .icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	box-sizing: border-box;
+	padding: 0 20px;
+	cursor: pointer;
+}
+
+.title {
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.logo-navbar {
+	width: 90px;
+	height: 100%;
+}
+
+a.logo-navbar:hover {
+	background-color: #fff;
+}
+
+.logo-navbar img {
+	height: 100%;
+}
