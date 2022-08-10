@@ -6,7 +6,7 @@ class PenerimaanKasModel extends CI_Model
     function __construct()
     {
         $this->load->database();
-        $this->verifikasi = $this->load->database('verifikasi_db', TRUE);
+        $this->verifikasi = $this->load->database('default', TRUE);
         //Access Model Lain
         $CI = &get_instance();
         $this->CI = $CI;
