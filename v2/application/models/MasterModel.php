@@ -6,8 +6,8 @@ class MasterModel extends CI_Model
     function __construct()
     {
         $this->load->database();
-        $this->payroll_db = $this->load->database('payroll_db', TRUE);
-        $this->verifikasi_db = $this->load->database('verifikasi_db', TRUE);
+        $this->payroll_db = $this->load->database('default', TRUE);
+        $this->verifikasi_db = $this->load->database('default', TRUE);
         
     }
 
