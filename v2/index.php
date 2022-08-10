@@ -54,17 +54,18 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-$environment = $_SERVER['HTTP_HOST'] === 'localhost' ||
-	$_SERVER['REMOTE_ADDR'] === '192.168.17.214' ||
-	$_SERVER['REMOTE_ADDR'] === '192.168.17.166' ||
-	$_SERVER['REMOTE_ADDR'] === '192.168.1.170' ||
-	$_SERVER['REMOTE_ADDR'] === '192.168.1.115' ||
-	$_SERVER['REMOTE_ADDR'] === '192.168.3.230' ||
-	$_SERVER['REMOTE_ADDR'] === '192.168.4.51' ||
-	$_SERVER['REMOTE_ADDR'] === '192.168.3.79'
-	? 'development' : 'production';
-define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : $environment);
+// $environment = $_SERVER['HTTP_HOST'] === 'localhost' ||
+// 	$_SERVER['REMOTE_ADDR'] === '192.168.17.214' ||
+// 	$_SERVER['REMOTE_ADDR'] === '192.168.17.166' ||
+// 	$_SERVER['REMOTE_ADDR'] === '192.168.1.170' ||
+// 	$_SERVER['REMOTE_ADDR'] === '192.168.1.115' ||
+// 	$_SERVER['REMOTE_ADDR'] === '192.168.3.230' ||
+// 	$_SERVER['REMOTE_ADDR'] === '192.168.4.51' ||
+// 	$_SERVER['REMOTE_ADDR'] === '192.168.3.79'
+// 	? 'development' : 'production';
+// define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : $environment);
 
+define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING
