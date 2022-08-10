@@ -4,7 +4,6 @@ applications.html
 bitnami.css
 error_log
 favicon.ico
-img
+# img
 webalizer
 xampp
-Config.php
