@@ -13,13 +13,12 @@
 		<a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
 			<span class="sr-only">Toggle navigation</span>
 		</a>
-
 		<div class="navbar-custom-menu">
 			<ul class="nav navbar-nav">
 				<!-- User Account: style can be found in dropdown.less -->
 				<li class="dropdown user user-menu">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<span class="hidden-xs"><?php echo $dokter['nama'] ?></span>
+						<span class="hidden-xs"><?php if($this->session->userdata('status') == 'admin'){ echo $admin['nama']; }else{ echo $dokter['nama']; } ?></span>
 					</a>
 					<ul class="dropdown-menu">
 						<li class="user-header">
@@ -31,9 +30,9 @@
                                 <small><?php //echo $this->session->userdata('divisi'); ?></small>
                             </p>
 						<li class="user-footer">
-							<!--<div class="pull-left">
-								<a href="#<?php //echo site_url('User/profile') ?>" class="btn btn-default btn-flat">Profil</a>
-							</div>-->
+							<div class="pull-left">
+								<a href="<?php echo site_url('master/profile') ?>" class="btn btn-default btn-flat">Profil</a>
+							</div>
 							<div class="pull-right">
 								<a href="<?php echo site_url('auth/logout') ?>" class="btn btn-default btn-flat">Keluar</a>
 							</div>

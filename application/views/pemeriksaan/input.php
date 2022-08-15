@@ -47,16 +47,29 @@
 						<?php endforeach; ?>
 						</div> 
 					</div>-->
-					<label  class="col-form-label col-sm-2">Tindakan</label>
+					<?php if($this->session->userdata('status') == 'admin'){ ?>
+					<label  class="col-form-label col-sm-2">Dokter Jaga</label>
 					<div class="col-sm-4">
-						<select class="form-control select2" name="tindakan[]" style="width: 100%;" required multiple="multiple" data-placeholder="Pilih Tindakan">
+						<select class="form-control select2" name="dokter_jaga" style="width: 100%;" required data-placeholder="Pilih Dokter Jaga">
 							<?php
-								foreach ($tarif as $row) {
-									echo '<option value="' . $row['nama_tarif'] . '">' . $row['nama_tarif'] . '</option>';
+								foreach ($datadokter as $row) {
+									echo '<option value="' . $row['id_dokter'] . '">' . $row['nama'] . '</option>';
 								}
 							?>
 						</select>
 					</div>
+					<?php }else{ ?>
+						<label class="col-form-label col-sm-2">Tindakan</label>
+						<div class="col-sm-4">
+							<select class="form-control select2" name="tindakan[]" style="width: 100%;" required multiple="multiple" data-placeholder="Pilih Tindakan">
+								<?php
+									foreach ($tarif as $row) {
+										echo '<option value="' . $row['nama_tarif'] . '">' . $row['nama_tarif'] . '</option>';
+									}
+								?>
+							</select>
+						</div>
+					<?php } ?>
 				</div>
 				<hr>
 				<h4>Pemeriksaan Fisik :</h4>
@@ -127,7 +140,7 @@
 					</div>
 				</div>
 				<div class="box-footer">
-					  <button type="submit" name="tambah" class="btn btn-primary">Simpan</button>
+					  <button type="submit" name="tambah" class="btn btn-success">Simpan</button>
 				</div>
 		</form>
     </div>
@@ -147,7 +160,7 @@
 							<th>Diagnosa</th>
 							<th>Keluhan</th>
 							<th>Tindakan</th>
-							<th>Terapi</th>
+							<!--<th>Terapi</th>-->
 							<th>Aksi</th>
 						</tr>
 					</thead>
@@ -163,9 +176,10 @@
 							<td><?= $r->diagnosa ?></td> 
 							<td><?= $r->keluhan ?></td>
 							<td><?= $r->tindakan ?></td>
-							<td><?= $r->terapi ?></td>
+							<!--<td><?= $r->terapi ?></td>-->
 							<td>							
-								<a href="<?= base_url('pemeriksaan/hapus/'.$r->id_periksa) ?>" class="btn btn-danger float-right" onclick="return confirm('yakin dok, mau dihapus?');">Hapus</a>  				
+								<a href="<?= base_url('pemeriksaan/ubah/'.$r->id_periksa) ?>" class="btn btn-info float-right">Ubah</a>
+								<a href="<?= base_url('pemeriksaan/hapus/'.$r->id_periksa) ?>" class="btn btn-danger float-right" onclick="return confirm('yakin dok, mau dihapus?');">Hapus</a>
 							</td>
 						</tr> 
 						 <?php } ?>

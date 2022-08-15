@@ -18,10 +18,10 @@ class Pemeriksaan extends CI_Controller {
 		$this->load->helper('url');
 	}
 
-
 	public function index(){
 		$judul['judul'] = 'Halaman Pemeriksaan';
 		$data['dokter'] = $this->db->get_where('dokter',['username' => $this->session->userdata('username')])->row_array();
+		$data['admin'] = $this->db->get_where('admin',['username' => $this->session->userdata('username')])->row_array();
 		$data['pasien'] = $this->Pasien_model->getAllPasien()->result();
 		$this->load->helper('date');
 		$this->load->view('templates/home_header', $judul);
@@ -30,7 +30,6 @@ class Pemeriksaan extends CI_Controller {
 		$this->load->view('pemeriksaan/index', $data);
 		$this->load->view('templates/home_footer');
 	}
-
 	
 	public function periksa($kd_rm){
 		$judul['judul'] = 'Pemeriksaan';
@@ -42,12 +41,36 @@ class Pemeriksaan extends CI_Controller {
 		$data1['pasien'] = $this->Pemeriksaan_model->tampil_detail($where1)->result();
 		$data2['pemeriksaan'] = $this->Pemeriksaan_model->tampil_pemeriksaan($where1)->result();
 		$data['dokter'] = $this->db->get_where('dokter',['username' => $this->session->userdata('username')])->row_array();
+		$data['admin'] = $this->db->get_where('admin',['username' => $this->session->userdata('username')])->row_array();
 		$data['tarif'] = $this->Pembayaran_model->tampil();
+		$data['datadokter'] = $this->Pemeriksaan_model->getdatadokter();
 		$this->load->view('templates/home_header', $judul);
 		$this->load->view('templates/home_sidebar',$data);
 		$this->load->view('templates/home_topbar', $data);
 		$this->load->view('pemeriksaan/detail', $data1);
 		$this->load->view('pemeriksaan/input', $data2);
+		$this->load->view('templates/home_footer');
+	}
+	
+	public function ubah($id_periksa){
+		$judul['judul'] = 'Pemeriksaan';
+		$data['desc'] = 'Tambah Pemeriksaan';
+		$data['kodeperiksa'] = $this->M_id->buat_kode_periksa();
+		$data['tanggal'] = date("d-m-Y");
+		$data['dokter'] = $this->db->get_where('dokter',['username' => $this->session->userdata('username')])->row_array();
+		$data['admin'] = $this->db->get_where('admin',['username' => $this->session->userdata('username')])->row_array();
+		$kd_rm = $this->Pemeriksaan_model->getKdRm($id_periksa);
+		$where1 = array('kd_rm' => $kd_rm);
+		$data1['pasien'] = $this->Pemeriksaan_model->tampil_detail($where1)->result();
+		$data2['pemeriksaan'] = $this->Pemeriksaan_model->tampil_pemeriksaan($where1)->result();
+		$data['dokter'] = $this->db->get_where('dokter',['username' => $this->session->userdata('username')])->row_array();
+		$data['datadokter'] = $this->Pemeriksaan_model->getdatadokter();
+		$data['tarif'] = $this->Pembayaran_model->tampil();
+		$this->load->view('templates/home_header', $judul);
+		$this->load->view('templates/home_sidebar',$data);
+		$this->load->view('templates/home_topbar', $data);
+		$this->load->view('pemeriksaan/detail_ubah', $data1);
+		$this->load->view('pemeriksaan/input_ubah', $data2);
 		$this->load->view('templates/home_footer');
 	}
 	
@@ -76,29 +99,128 @@ class Pemeriksaan extends CI_Controller {
 		$id_periksa = $this->input->post('id_periksa');
 		$keluhan = $this->input->post('keluhan');
 		$diagnosa = $this->input->post('diagnosa');
+		$dokter_jaga = $this->input->post('dokter_jaga');
 		// $terapi = $this->input->post('terapi');
 		$tindakan = implode(' , ', $this->input->post('tindakan',TRUE)) ;
 		$tanggal = $this->input->post('tanggal');
 		$id_dokter = $this->db->query("SELECT id_dokter FROM dokter WHERE username='$username'")->row_array();
+		$tinggi_badan = $this->input->post('tinggi_badan');
+		$berat_badan = $this->input->post('berat_badan');
+		$lingkar_perut = $this->input->post('lingkar_perut');
+		$imt = $this->input->post('imt');
+		$sistole = $this->input->post('sistole');
+		$diastole = $this->input->post('diastole');
+		$respiratory_rate = $this->input->post('respiratory_rate');
+		$heartrate = $this->input->post('heartrate');
+		if($this->session->userdata('status') == 'admin'){
+			$data = array(
+							'kd_rm' => $kd_rm,
+							'id_periksa' => $id_periksa,
+							'keluhan' => $keluhan,
+							'diagnosa' => $diagnosa,
+							'id_dokter' => $dokter_jaga,
+							// 'terapi' => $terapi,
+							// 'tindakan' => $tindakan,
+							'tanggal' => $tanggal,
+							'tinggi_badan' => $tinggi_badan,
+							'berat_badan' => $berat_badan,
+							'lingkar_perut' => $lingkar_perut,
+							'imt' => $imt,
+							'sistole' => $sistole,
+							'diastole' => $diastole,
+							'respiratory_rate' => $respiratory_rate,
+							'heartrate' => $heartrate
+						);
+		}else{
+			$data = array(
+							'kd_rm' => $kd_rm,
+							'id_periksa' => $id_periksa,
+							'keluhan' => $keluhan,
+							'diagnosa' => $diagnosa,
+							'id_dokter' => $id_dokter['id_dokter'],
+							// 'terapi' => $terapi,
+							'tindakan' => $tindakan,
+							'tanggal' => $tanggal,
+							'tinggi_badan' => $tinggi_badan,
+							'berat_badan' => $berat_badan,
+							'lingkar_perut' => $lingkar_perut,
+							'imt' => $imt,
+							'sistole' => $sistole,
+							'diastole' => $diastole,
+							'respiratory_rate' => $respiratory_rate,
+							'heartrate' => $heartrate
+						);
+		}
+		$kd_resep = $this->Pemeriksaan_model->getLastKdResep();
+		// $kd_resep = (int) $last + 1;
+		if($this->session->userdata('status') == 'admin'){
+			$dataresep = array(
+							'id_pemeriksaan' => $id_periksa,
+							'id_dokter' => $dokter_jaga,
+							'kd_resep' => $kd_resep
+						);
+		} else {
+			$dataresep = array(
+							'id_pemeriksaan' => $id_periksa,
+							'id_dokter' => $id_dokter['id_dokter'],
+							'kd_resep' => $kd_resep
+						);
+		}
+		$this->Pemeriksaan_model->input_data($data, 'pemeriksaan');
+		$this->Pemeriksaan_model->input_data($dataresep, 'resep');
+		$this->session->set_flashdata('msg', '<div class="alert alert-success"> 
+												<button type="button" class="close" data-dismiss="alert">&times;</button>Data Berhasil ditambahkan.
+											</div>');
+		redirect('pemeriksaan/periksa/'.$kd_rm,'');
+	}
+	
+	function ubah_aksi(){
+		$username = $this->session->userdata('username');
+		$kd_rm = $this->input->post('kd_rm');
+		$id_periksa = $this->input->post('id_periksa');
+		$keluhan = $this->input->post('keluhan');
+		$diagnosa = $this->input->post('diagnosa');
+		$dokter_jaga = $this->input->post('dokter_jaga');
+		$tanggal = $this->input->post('tanggal');
+		$tindakan = implode(' , ', $this->input->post('tindakan',TRUE));
+		$tinggi_badan = $this->input->post('tinggi_badan');
+		$berat_badan = $this->input->post('berat_badan');
+		$lingkar_perut = $this->input->post('lingkar_perut');
+		$imt = $this->input->post('imt');
+		$sistole = $this->input->post('sistole');
+		$diastole = $this->input->post('diastole');
+		$respiratory_rate = $this->input->post('respiratory_rate');
+		$heartrate = $this->input->post('heartrate');
 		$data = array(
 						'kd_rm' => $kd_rm,
 						'id_periksa' => $id_periksa,
 						'keluhan' => $keluhan,
 						'diagnosa' => $diagnosa,
-						// 'terapi' => $terapi,
-						'tindakan' => $tindakan,
+						'id_dokter' => $dokter_jaga,
 						'tanggal' => $tanggal,
-						'id_dokter' => $id_dokter['id_dokter']
+						'tindakan' => $tindakan,
+						'tinggi_badan' => $tinggi_badan,
+						'berat_badan' => $berat_badan,
+						'lingkar_perut' => $lingkar_perut,
+						'imt' => $imt,
+						'sistole' => $sistole,
+						'diastole' => $diastole,
+						'respiratory_rate' => $respiratory_rate,
+						'heartrate' => $heartrate
 					);
-		$kd_resep = $this->Pemeriksaan_model->getLastKdResep();
-		// $kd_resep = (int) $last + 1;
-		$dataresep = array(
-						'id_pemeriksaan' => $id_periksa,
-						'id_dokter' => $id_dokter['id_dokter'],
-						'kd_resep' => $kd_resep
-					);
-		$this->Pemeriksaan_model->input_data($data, 'pemeriksaan');
-		$this->Pemeriksaan_model->input_data($dataresep, 'resep');
+		// $this->Pemeriksaan_model->input_data($data, 'pemeriksaan');
+		$result = $this->Pemeriksaan_model->ubah_data2($data);
+		if (!empty($result)){
+			if ($result = TRUE) {
+				$this->session->set_flashdata('msg', '<div class="alert alert-success"> 
+												<button type="button" class="close" data-dismiss="alert">&times;</button>Data Berhasil diupdate.
+											</div>');
+			} else {
+				$this->session->set_flashdata('msg', '<div class="alert alert-danger"> 
+												<button type="button" class="close" data-dismiss="alert">&times;</button>Data Gagal diupdate.
+											</div>');
+			}
+		}
 		redirect('pemeriksaan/periksa/'.$kd_rm,'');
 	}
 	
@@ -108,7 +230,7 @@ class Pemeriksaan extends CI_Controller {
 	}
 
 	
-/*LAPORAN TRANSAKSI*/
+	/*LAPORAN TRANSAKSI*/
 	function laporan(){
 		if(isset($_GET['filter']) && ! empty($_GET['filter'])){
 			$filter = $_GET['filter'];

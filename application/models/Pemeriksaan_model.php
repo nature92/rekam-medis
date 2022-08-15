@@ -60,6 +60,21 @@ class Pemeriksaan_model extends CI_Model {
 		$this->db->where('kd_rm', $this->input->post('kd_rm') );
 		$this->db->update('pemeriksaan', $data);
 	}
+	
+	public function ubah_data2($data){
+        $sql = $this->db->query(" UPDATE pemeriksaan
+									SET keluhan = '" . $data['keluhan'] . "', diagnosa = '" . $data['diagnosa'] . "', tindakan = '" . $data['tindakan'] . "', tanggal = '" . $data['tanggal'] . "', 
+										id_dokter = '" . $data['id_dokter'] . "', tinggi_badan = '" . $data['tinggi_badan'] . "', berat_badan = '" . $data['berat_badan'] . "', 
+										lingkar_perut = '" . $data['lingkar_perut'] . "', imt = '" . $data['imt'] . "', sistole = '" . $data['sistole'] . "', diastole = '" . $data['diastole'] . "',
+										respiratory_rate = '" . $data['respiratory_rate'] . "', heartrate = '" . $data['heartrate'] . "'
+									WHERE id_periksa = '" . $data['id_periksa'] . "' and kd_rm = '" . $data['kd_rm'] . "' ;  ");
+        if ($this->db->affected_rows() > 0) {
+            $result = TRUE;
+        } else {
+            $result = FALSE;
+        }
+        return $result;
+    }
 
 	public function hapus_data($id_periksa){
 		$this->db->where('id_periksa', $id_periksa);
@@ -70,16 +85,15 @@ class Pemeriksaan_model extends CI_Model {
 		$query=$this->db->get('pemeriksaan');
 		if($query->num_rows()>0){
 			return $query->num_rows();
-		}
-		else{
+		} else {
 			return 0;
 		}
 	}
 
-   // ob_start();
-   // var_dump($pasien);
-   // $result = ob_get_contents(); //or ob_get_clean()
-   // //ob_end_clean() 
+	// ob_start();
+	// var_dump($pasien);
+	// $result = ob_get_contents(); //or ob_get_clean()
+	// //ob_end_clean() 
 
 	/*LAPORAN TRANSAKSI*/
   	public function view_by_date($tanggal1, $tanggal2){
@@ -190,6 +204,23 @@ class Pemeriksaan_model extends CI_Model {
 		$kodemax=str_pad($kode,4,"0",STR_PAD_LEFT);//angka 3 meunjukan jumlah digit angka 0
 		$kodejadi="RSP".$tgl.$kodemax; //hasilnya KLS-1026-001 dst. 
 		return $kodejadi;
+    }
+	
+	function getdatadokter(){
+		$query = "SELECT `dokter`.`id_dokter` , `dokter`.`nama` FROM  `dokter` ";
+		$dokter = $this->db->query($query)->result_array();
+        return $dokter;
+	}
+	
+	public function getKdRm($id_periksa) {
+        $sql = $this->db->query( " SELECT kd_rm FROM pemeriksaan WHERE id_periksa='".$id_periksa."'  ");
+        $obj = $sql->row_object();
+        $num = $sql->num_rows();
+        if ($num > 0) {
+            return $obj->kd_rm;
+        } else {
+            return '';
+        }
     }
 
 }

@@ -7,6 +7,7 @@ class Master extends CI_Controller {
 			redirect(base_url("auth"));
 		}
 		$this->load->model('Master_model');
+		$this->load->model('Admin_model');
 	}
 
 	public function index(){
@@ -41,17 +42,24 @@ class Master extends CI_Controller {
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 		$passwordconfirm = $this->input->post('passwordconfirm');
-		$data = array(
-						'username' => $username,
-						'password' => $password,
-						'passwordconfirm' => $passwordconfirm
-					);
-		$where = array('username' => $username);
-		$this->Admin_model->update_data($where, $data,'admin');
-		redirect('master/profile');
-		$this->session->set_flashdata('msg', '<div class="alert alert-success"> 
-												<button type="button" class="close" data-dismiss="alert">&times;</button> Data pegawai berhasil disimpan 
-											</div>');
+		if($password == $passwordconfirm){
+			$data = array(
+							'username' => $username,
+							'password' => password_hash($password, PASSWORD_DEFAULT),
+							// 'passwordconfirm' => password_hash($passwordconfirm, PASSWORD_DEFAULT)
+						);
+			$where = array('username' => $username);
+			$this->Admin_model->update_data($where, $data,'admin');
+			$this->session->set_flashdata('msg', '<div class="alert alert-success"> 
+													<button type="button" class="close" data-dismiss="alert">&times;</button> Data password berhasil diubah 
+												</div>');
+			redirect('master/profile');
+		}else{
+			$this->session->set_flashdata('msg', '<div class="alert alert-danger"> 
+													<button type="button" class="close" data-dismiss="alert">&times;</button> Confirm Password tidak sesuai 
+												</div>');
+			redirect('master/profile');
+		}
 	}
 	
 }
