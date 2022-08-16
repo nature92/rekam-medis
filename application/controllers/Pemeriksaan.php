@@ -198,7 +198,6 @@ class Pemeriksaan extends CI_Controller {
 						'diagnosa' => $diagnosa,
 						'id_dokter' => $dokter_jaga,
 						'tanggal' => $tanggal,
-<<<<<<< HEAD
 						'tindakan' => $tindakan,
 						'tinggi_badan' => $tinggi_badan,
 						'berat_badan' => $berat_badan,
@@ -208,17 +207,6 @@ class Pemeriksaan extends CI_Controller {
 						'diastole' => $diastole,
 						'respiratory_rate' => $respiratory_rate,
 						'heartrate' => $heartrate
-=======
-						'id_dokter' => $id_dokter['id_dokter'],
-						'tinggi_badan' => $this->input->post('tinggi_badan'),
-						'berat_badan' => $this->input->post('berat_badan'),
-						'lingkar_perut' => $this->input->post('lingkar_perut'),
-						'imt' => $this->input->post('imt'),
-						'sistole' => $this->input->post('sistole'),
-						'diastole' => $this->input->post('diastole'),
-						'respiratory_rate' => $this->input->post('respiratory_rate'),
-						'heartrate' => $this->input->post('heartrate'),
->>>>>>> fecd16e90baf89f80cf5593132ffd381d1e51a0d
 					);
 		// $this->Pemeriksaan_model->input_data($data, 'pemeriksaan');
 		$result = $this->Pemeriksaan_model->ubah_data2($data);

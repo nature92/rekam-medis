@@ -20,13 +20,13 @@
 					<label for="keluhan" class="col-sm-2 col-form-label">Keluhan</label> 
 					<div class="col-sm-4"> 
 						<!--<textarea class="form-control" id="keluhan" name="keluhan" rows="2" required="keluhan"></textarea> -->
-						<textarea id="keluhan" name="keluhan" rows="3" cols="51" class="form-control"> </textarea>
+						<textarea id="keluhan" name="keluhan" rows="3" cols="51" class="form-control" required="keluhan"> </textarea>
 					</div>  
 					<label for="diagnosa" class="col-sm-2 col-form-label">Diagnosis</label>
 					<div class="col-sm-4">
 						<!--<textarea class="form-control" id="diagnosa" name="diagnosa" rows="2" required="diagnosa">
 						</textarea> -->
-						<textarea id="diagnosa" name="diagnosa" rows="3" cols="51" class="form-control"> </textarea>
+						<textarea id="diagnosa" name="diagnosa" rows="3" cols="51" required="diagnosa" class="form-control"> </textarea>
 					</div>
 				</div>
 				<div class="form-group row">
@@ -50,11 +50,7 @@
 					<?php if($this->session->userdata('status') == 'admin'){ ?>
 					<label  class="col-form-label col-sm-2">Dokter Jaga</label>
 					<div class="col-sm-4">
-<<<<<<< HEAD
 						<select class="form-control select2" name="dokter_jaga" style="width: 100%;" required data-placeholder="Pilih Dokter Jaga">
-=======
-						<select class="form-control select2" name="tindakan[]" style="width: 100%;" multiple="multiple" data-placeholder="Pilih Tindakan">
->>>>>>> fecd16e90baf89f80cf5593132ffd381d1e51a0d
 							<?php
 								foreach ($datadokter as $row) {
 									echo '<option value="' . $row['id_dokter'] . '">' . $row['nama'] . '</option>';
