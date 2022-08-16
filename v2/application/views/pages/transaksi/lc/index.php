@@ -1,0 +1,10 @@
+<?php
+    $this->load->view('pages/transaksi/lc/modal_add_lc');
+    $this->load->view('pages/transaksi/lc/modal_detail_lc');
+    $this->load->view('pages/transaksi/lc/modal_detail_penerbitan_lc');
+    $this->load->view('pages/transaksi/lc/modal_detail_barang_lc');
+    $this->load->view('pages/transaksi/lc/modal_detail_release_dokumen_lc');
+    $this->load->view('pages/transaksi/lc/modal_delete_lc');
+    $this->load->view('pages/transaksi/lc/modal_edit_upload_po_asli_lc');
+    $this->load->view('pages/transaksi/lc/modal_detail_status_penagihan_lc');
+    $this->load->view('pages/transaksi/lc/modal_detail_penagihan_lc');

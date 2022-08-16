@@ -1,0 +1,9 @@
+.vscode
+document/
+
+assets/upload/trx_pendanaan/evidence/*
+assets/upload/trx_pendanaan/file_lampiran/*
+
+assets/upload/trx_lc_skbdn/*
+assets/upload/mst_bank/*
+
