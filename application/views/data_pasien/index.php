@@ -23,11 +23,12 @@
                     <tr>
                       <th>No.</th>
                       <th>Kode RM</th>
+                      <th>No. BPJS</th>
                       <th>Nama Pasien</th>
                       <th>Jenis Kelamin</th>
                       <th>Tempat Lahir</th>
                       <th>Tanggal Lahir</th>
-                      <th>Umur</th>
+                      <!--<th>Umur</th>-->
                       <th>Alamat</th>
                       <th>Pengobatan</th>
                       <th>Aksi</th>
@@ -44,11 +45,12 @@
                     <tr>
                       <td><?= $id_pasien ++ ?></td>
                       <td><?= $p->kd_rm ?></td>
+                      <td><?= $p->no_bpjs ?></td>
                       <td><?= $p->nama_pasien ?></td>
-                      <td><?= $p->jenkel ?></td>
+                      <td><?php if($p->jenkel === 'Laki-Laki'){echo 'L';}else{echo 'P';} ?></td>
                       <td><?= $p->tempat_lahir ?></td>
                       <td><?= $p->tanggal_lahir ?></td>
-                      <td><?= timespan($awal, $ayeuna, 2);  ?></td>
+                      <!--<td><?= timespan($awal, $ayeuna, 2);  ?></td>-->
                       <td><?= $p->alamat ?></td>
                       <td><?php echo $p->pengobatan ?></td>
                       <td>
