@@ -27,13 +27,13 @@
 				<div class="small-box bg-green">
 					<div class="inner">
 						<h3><?= $jumlahrm; ?></h3>
-						<p>Rekam Medis (RM)</p>
+						<p>Data Pemeriksaan</p>
 					</div>
 					<div class="icon">
 						<i class="fa fa-file-text"></i>
 					</div>
 					<?php //if ($_SESSION["status"]=="dokter"){ ?>
-						<a href="<?= base_url('pemeriksaan'); ?>" class="small-box-footer">Lihat Data Rekam Medis <i class="fa fa-arrow-circle-right"></i></a>
+						<a href="<?= base_url('pemeriksaan'); ?>" class="small-box-footer">Lihat Data Pemeriksaan <i class="fa fa-arrow-circle-right"></i></a>
 					<?php //} ?>
 				</div>
 			</div>
