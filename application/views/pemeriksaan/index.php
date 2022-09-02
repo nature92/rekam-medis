@@ -11,11 +11,13 @@
 							<thead>
 								<tr>
 									<th>No.</th>
+									<th>Kode Pemeriksaan</th>  
+									<th>Tanggal Pemeriksaan</th>  
 									<th>Kode RM</th>  
 									<th>Nama Pasien</th>
 									<th>Tanggal Lahir</th>
-									<th>Umur</th>
-									<th>Aksi</th>
+									<!--<th>Umur</th>-->
+									<th>Aksi Pemeriksaan</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -27,12 +29,15 @@
 								?>
 								<tr>
 									<td><?= $no_rm ++ ?></td>
+									<td><?= $r->id_periksa ?></td>
+									<td><?= $r->tanggal ?></td>
 									<td><?= $r->kd_rm ?></td>
 									<td><?= $r->nama_pasien ?></td> 
 									<td><?= $r->tanggal_lahir ?></td>
-									<td><?= timespan($awal, $ayeuna, 2);  ?></td>
+									<!--<td><?= timespan($awal, $ayeuna, 2);  ?></td>-->
 									<td>
-										<a href="<?= base_url('pemeriksaan/periksa/'.$r->kd_rm) ?>" class="btn btn-primary btn-xs "> Tambah Pemeriksaan</a>
+										<a href="<?= base_url('pemeriksaan/ubah/'.$r->id_periksa) ?>" class="btn btn-primary btn-xs "> Detail</a>
+										<a href="<?= base_url('pemeriksaan/periksa/'.$r->kd_rm) ?>" class="btn btn-success btn-xs "> Tambah</a>
 									</td>
 								</tr> 
 								<?php } ?>
