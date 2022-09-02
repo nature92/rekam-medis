@@ -54,10 +54,11 @@
                       <td><?= $p->alamat ?></td>
                       <td><?php echo $p->pengobatan ?></td>
                       <td>
-                        <a href="<?= base_url('data_pasien/hapus/'.$p->kd_rm) ?>" class="btn btn-danger btn-xs" onclick="return confirm('yakin min, mau dihapus?');"><i class="fa fa-trash"></i>Hapus</a>  
-                        <a href="<?= base_url('data_pasien/ubah/'.$p->kd_rm) ?>" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i>Ubah</a>
-                        <a href="<?= base_url('cetak/cetak/'.$p->kd_rm) ?>" class="btn btn-default btn-xs"><i class="fa fa-print"></i>Cetak</a>
-                        <a href="<?= base_url('pemeriksaan/periksaDetail/'.$p->kd_rm) ?>" class="btn btn-success btn-xs"><i class="fa fa-edit"></i>Detail</a>
+                        <a href="<?= base_url('data_pasien/hapus/'.$p->kd_rm) ?>" class="btn btn-danger btn-xs" onclick="return confirm('yakin min, mau dihapus?');"><i class="fa fa-trash"></i> Hapus</a>  
+                        <a href="<?= base_url('data_pasien/ubah/'.$p->kd_rm) ?>" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i> Ubah</a>
+                        <a href="<?= base_url('cetak/cetak/'.$p->kd_rm) ?>" class="btn btn-default btn-xs"><i class="fa fa-print"></i> Cetak</a>
+                        <a href="<?= base_url('pemeriksaan/periksaDetail/'.$p->kd_rm) ?>" class="btn btn-success btn-xs"><i class="fa fa-edit"></i> Detail</a>
+                        <a href="<?= base_url('pemeriksaan/periksa/'.$p->kd_rm) ?>" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Periksa</a>
                       </td>
                     </tr>
                     <?php } ?>
