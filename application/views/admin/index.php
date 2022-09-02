@@ -1,12 +1,9 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-		<h1>
-			<?= $judul; ?>
-		</h1>
+		<h1> <?= $judul; ?> </h1>
 		<h1 class="h3 mb-4 text-gray-800">Selamat Datang <span><?= $admin['nama']; ?></span> </h1> 
     </section>
-              
     <!-- Main content -->
     <section class="content">
 		<!-- Small boxes (Stat box) -->

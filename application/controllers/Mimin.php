@@ -1,19 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class Mimin extends CI_Controller {
-
 	function __construct()
 	{
 		parent::__construct();
 		if(!$this->session->userdata('username')){
 			redirect(base_url("auth"));
 		}
-
 		$this->load->model('Pasien_model');
 		$this->load->model('Pemeriksaan_model');
-		
-		
 	}
 
 	public function index()
@@ -28,5 +23,4 @@ class Mimin extends CI_Controller {
 		$this->load->view('admin/index', $data);
 		$this->load->view('templates/home_footer',$data);
 	}
-
 }
