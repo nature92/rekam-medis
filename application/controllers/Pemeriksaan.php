@@ -62,7 +62,8 @@ class Pemeriksaan extends CI_Controller {
 		$kd_rm = $this->Pemeriksaan_model->getKdRm($id_periksa);
 		$where1 = array('kd_rm' => $kd_rm);
 		$data1['pasien'] = $this->Pemeriksaan_model->tampil_detail($where1)->result();
-		$data2['pemeriksaan'] = $this->Pemeriksaan_model->tampil_pemeriksaan($where1)->result();
+		// $data2['pemeriksaan'] = $this->Pemeriksaan_model->tampil_pemeriksaan($where1)->result();  // asli
+		$data2['pemeriksaan'] = $this->Pemeriksaan_model->tampil_pemeriksaan1($id_periksa)->result();
 		$data['dokter'] = $this->db->get_where('dokter',['username' => $this->session->userdata('username')])->row_array();
 		$data['datadokter'] = $this->Pemeriksaan_model->getdatadokter();
 		$data['tarif'] = $this->Pembayaran_model->tampil();

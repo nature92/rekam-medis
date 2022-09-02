@@ -27,6 +27,13 @@ class Pemeriksaan_model extends CI_Model {
 		$this->db->where_in('kd_rm',$where1);
 		return $query = $this->db->get();
 	}
+	
+	function tampil_pemeriksaan1($id_periksa){
+		$this->db->select('*');    
+		$this->db->from('pemeriksaan');
+		$this->db->where_in('id_periksa',$id_periksa);
+		return $query = $this->db->get();
+	}
 
 	public function getAllRMSortRm(){
 		$query = "SELECT `pemeriksaan`.`kd_rm` FROM  `pemeriksaan` ORDER BY `tanggal` DESC ";
