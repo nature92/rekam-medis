@@ -22,7 +22,7 @@ class Pemeriksaan extends CI_Controller {
 		$judul['judul'] = 'Halaman Pemeriksaan';
 		$data['dokter'] = $this->db->get_where('dokter',['username' => $this->session->userdata('username')])->row_array();
 		$data['admin'] = $this->db->get_where('admin',['username' => $this->session->userdata('username')])->row_array();
-		$data['pasien'] = $this->Pasien_model->getAllPasien()->result();
+		$data['pasien'] = $this->Pasien_model->getAllPemeriksaanPasien()->result();
 		$this->load->helper('date');
 		$this->load->view('templates/home_header', $judul);
 		$this->load->view('templates/home_sidebar', $data);

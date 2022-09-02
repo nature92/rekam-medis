@@ -1,6 +1,11 @@
 <?php 
 class Pasien_model extends CI_Model {
+	
 	public function getAllPasien(){
+		return $this->db->query('SELECT * FROM  `pasien` ORDER BY kd_rm DESC');
+	}
+	
+	public function getAllPemeriksaanPasien(){
 		// return $this->db->query('SELECT * FROM  `pasien` ORDER BY kd_rm DESC');
 		return $this->db->query('SELECT * FROM `pasien` inner join pemeriksaan on `pemeriksaan`.`kd_rm` = `pasien`.`kd_rm` ORDER BY pasien.kd_rm DESC');
 	}
