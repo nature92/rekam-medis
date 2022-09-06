@@ -55,14 +55,14 @@
 					<label for="keluhan" class="col-sm-2 col-form-label">Tinggi Badan</label> 
 					<div class="col-sm-4">
 						<div class="input-group">
-							<input type="text" class="form-control" id="tinggi_badan" name="tinggi_badan" value="<?php echo $per->tinggi_badan; ?>" >
+							<input type="text" class="form-control" id="tinggi_badan" name="tinggi_badan" value="<?php echo $per->tinggi_badan; ?>" onkeyup="functionKeyUp()" required >
 							<span class="input-group-addon">cm</span>
 						</div>
 					</div>
 					<label for="diagnosa" class="col-sm-2 col-form-label">Berat Badan</label>
 					<div class="col-sm-4">
 						<div class="input-group">
-							<input type="text" class="form-control" id="berat_badan" name="berat_badan" value="<?php echo $per->berat_badan; ?>">
+							<input type="text" class="form-control" id="berat_badan" name="berat_badan" value="<?php echo $per->berat_badan; ?>" onkeyup="functionKeyUp()" required >
 							<span class="input-group-addon">kg</span>
 						</div>
 					</div>
@@ -78,7 +78,7 @@
 					<label for="diagnosa" class="col-sm-2 col-form-label">IMT</label>
 					<div class="col-sm-4">
 						<div class="input-group">
-							<input type="text" class="form-control" id="imt" name="imt" value="<?php echo $per->imt; ?>">
+							<input type="text" class="form-control" id="imt" name="imt" value="<?php echo $per->imt; ?>" readonly >
 							<span class="input-group-addon">kg/m2</span>
 						</div>
 					</div>
@@ -124,7 +124,6 @@
 			<?php } ?>
 		</form>
     </div>
-
               </div>
     </div>
           					
@@ -133,3 +132,18 @@
         </div>
     </div>
 </div>
+
+<script>
+// $(document).ready(function() {
+	function functionKeyUp() {
+		var t = $("input[name='tinggi_badan']").val();
+		var tinggi = t/100; // ukuran dalam meter
+		var berat = $("input[name='berat_badan']").val();
+		var tinggibadan = parseFloat(tinggi);
+		var beratbadan = parseFloat(berat);
+		var nilaiimt = beratbadan/(tinggibadan * tinggibadan);
+		var imt = nilaiimt.toFixed(2);
+		$("input[name='imt']").val(imt);
+	}
+// });	
+</script>
