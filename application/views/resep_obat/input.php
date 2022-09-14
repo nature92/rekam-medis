@@ -70,11 +70,12 @@
 											<div class="form-group row">
 												<label for="aturan_pakai" class="col-sm-2 control-label">Aturan Pakai</label>
 												<div class="col-sm-10">
-													<select class="form-control select2" multiple="multiple" id="aturan_pakai" name="aturan_pakai[]"><option value=''>Pilih Aturan Pakai</option>
+													<!--<select class="form-control select2" multiple="multiple" id="aturan_pakai" name="aturan_pakai[]"><option value=''>Pilih Aturan Pakai</option>
 														<?php foreach ($aturan as $r) : ?>
 															<option value="<?= $r->nama_aturan ?>"><?= $r->nama_aturan ?></option>
 														<?php endforeach; ?>
-													</select>
+													</select> -->
+													<textarea id="aturan_pemakaian" name="aturan_pemakaian" rows="3" cols="51" required="aturan_pakai" class="form-control"> </textarea>
 												</div>
 											</div>
 										<div class="box-footer">

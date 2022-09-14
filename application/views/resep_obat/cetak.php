@@ -42,7 +42,8 @@
 <tr>
 	<td><?php echo $row->nama_obat ?></td>
 	<td>:</td>
-	<td><?php echo $row->aturan_pakai ?></td>
+	<!--<td><?php echo $row->aturan_pakai ?></td>-->
+	<td><?php echo $row->aturan_pemakaian ?></td>
 </tr>	
 	
 <?php } ?>

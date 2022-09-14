@@ -14,7 +14,6 @@ class Resep_obat extends CI_Controller {
 		$this->load->library('form_validation');
 	}
 
-
 	public function index(){
 		$judul['judul'] = 'Halaman Resep Obat';
 		$data['koderesep'] = $this->M_id->buat_kode_resep();
@@ -40,7 +39,6 @@ class Resep_obat extends CI_Controller {
 		$this->load->view('resep_obat/lihat', $data);
 		$this->load->view('templates/home_footer' );
 	}
-
 	
 	public function detail($id_periksa){
 		$judul['judul'] = 'Resep Obat';
@@ -73,7 +71,8 @@ class Resep_obat extends CI_Controller {
 		$kode_resep = $this->input->post('kd_resep');
 		$kd_resep = $this->input->post('kd_resep');
 		$id_obat = $this->input->post('id_obat');
-		$aturan_pakai = implode(' , ', $this->input->post('aturan_pakai',TRUE)) ;
+		// $aturan_pakai = implode(' , ', $this->input->post('aturan_pakai',TRUE)) ;
+		$aturan_pemakaian = $this->input->post('aturan_pemakaian');
 		$id_periksa = $this->input->post('id_periksa');
 		$tanggal_resep = $this->input->post('tanggal_resep');
 		$tambah = $this->input->post('tambah');
@@ -103,7 +102,8 @@ class Resep_obat extends CI_Controller {
 					$data = array(
 									'kd_resep' => $kd_resep,
 									'id_obat' => $id_obat,
-									'aturan_pakai' => $aturan_pakai,
+									// 'aturan_pakai' => $aturan_pakai,
+									'aturan_pemakaian' => $aturan_pemakaian,
 									'stok_out'  => $stok_out,
 									'stok_tot'  => $stok_tot,
 									'total'  => $total
