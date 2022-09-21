@@ -13,7 +13,8 @@ class Mimin extends CI_Controller {
 
 	public function index()
 	{
-		$judul['judul'] = 'Halaman Beranda Admin';
+		// $judul['judul'] = 'Beranda Admin';
+		$judul['judul'] = 'Selamat datang';
 		$data['jumlahpasien'] = $this->Pasien_model->jumlahpasien();
 		$data['jumlahrm'] = $this->Pemeriksaan_model->jumlahrm();
 		$data['admin'] = $this->db->get_where('admin',['username' => $this->session->userdata('username')])->row_array();
