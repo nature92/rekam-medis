@@ -14,6 +14,7 @@ class Pemeriksaan extends CI_Controller {
 		$this->load->model('Karyawan_model');
 		$this->load->model('Obat_model');
 		$this->load->model('M_id');
+		$this->load->model('Resep_model');
 		$this->load->library('form_validation');
 		$this->load->helper('url');
 	}
@@ -56,17 +57,23 @@ class Pemeriksaan extends CI_Controller {
 		$judul['judul'] = 'Pemeriksaan';
 		$data['desc'] = 'Tambah Pemeriksaan';
 		$data['kodeperiksa'] = $this->M_id->buat_kode_periksa();
+		$data['koderesep'] = $this->M_id->buat_kode_resep();
 		$data['tanggal'] = date("d-m-Y");
 		$data['dokter'] = $this->db->get_where('dokter',['username' => $this->session->userdata('username')])->row_array();
 		$data['admin'] = $this->db->get_where('admin',['username' => $this->session->userdata('username')])->row_array();
+		$data['obat'] = $this->Obat_model->getAllObat()->result();
 		$kd_rm = $this->Pemeriksaan_model->getKdRm($id_periksa);
 		$where1 = array('kd_rm' => $kd_rm);
 		$data1['pasien'] = $this->Pemeriksaan_model->tampil_detail($where1)->result();
 		// $data2['pemeriksaan'] = $this->Pemeriksaan_model->tampil_pemeriksaan($where1)->result();  // asli
 		$data2['pemeriksaan'] = $this->Pemeriksaan_model->tampil_pemeriksaan1($id_periksa)->result();
+		$where = array('id_periksa' => $id_periksa);
+		$data['data_pemeriksaan'] = $this->Resep_model->tampil_detail($where)->result();
 		$data['dokter'] = $this->db->get_where('dokter',['username' => $this->session->userdata('username')])->row_array();
 		$data['datadokter'] = $this->Pemeriksaan_model->getdatadokter();
 		$data['tarif'] = $this->Pembayaran_model->tampil();
+		$data['resep'] = $this->db->query(" SELECT * FROM detail_resep JOIN obat on detail_resep.id_obat = obat.id_obat left join resep on resep.kd_resep = detail_resep.kd_resep WHERE resep.id_pemeriksaan='".$id_periksa."'")->result();
+		$data['subtotal'] = $this->Resep_model->hitungjumlah('detail_resep', ['kd_resep' => $this->M_id->buat_kode_resep()]);
 		$this->load->view('templates/home_header', $judul);
 		$this->load->view('templates/home_sidebar',$data);
 		$this->load->view('templates/home_topbar', $data);

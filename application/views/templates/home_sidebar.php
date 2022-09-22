@@ -70,12 +70,12 @@
 						<span class="pull-right-container"></span>
 					</a>
 				</li>
-				<li>
+				<!--<li>
 					<a href="<?= base_url('resep_obat');?>">
 						<i class=" fa fa-fw fa-flask"></i><span>Resep Obat</span>
 						<span class="pull-right-container"></span>
 					</a>
-				</li>
+				</li> -->
 				<?php } ?>
 
 				<?php if ($_SESSION["status"]=="apoteker"){ ?>

@@ -94,11 +94,11 @@ class Resep_obat extends CI_Controller {
 			if ($stok_tot < 0) {
 				// echo "<script language=\"javascript\">alert (\"Stok tidak cukup atau habis\"); document.location=\"../transaksi/tambah_keluar\"</script>";
 				echo "<script language=\"javascript\">alert (\"Stok tidak cukup atau habis\"); document.location=\"../resep_obat/detail/".$id_periksa."\"</script>";
-		    }else{
+		    } else {
 				if ($cek > 0) {
 					$this->db->query("UPDATE detail_resep set stok_out='$stok_out2', stok_tot='$stok_tot2', total='$total2' WHERE kd_resep='$kd_resep' AND id_obat='$id_obat'");
 					redirect('resep_obat/detail/'.$id_periksa,'');
-				}else{
+				} else {
 					$data = array(
 									'kd_resep' => $kd_resep,
 									'id_obat' => $id_obat,
@@ -112,7 +112,7 @@ class Resep_obat extends CI_Controller {
 					redirect('resep_obat/detail/'.$id_periksa,'');
 				}
 			}
-		}elseif ($simpan){
+		} else if ($simpan){
 			$data = array(
 							'kd_resep' => $kd_resep,
 							'id_pemeriksaan' => $id_periksa,
@@ -124,6 +124,69 @@ class Resep_obat extends CI_Controller {
 			$this->Resep_model->updateResep($kd_resep, $subtotal, $tanggal_resep); // asli
 			$this->db->query("UPDATE obat JOIN detail_resep ON obat.id_obat = detail_resep.id_obat SET obat.stok = detail_resep.stok_tot WHERE detail_resep.kd_resep = '$kd_resep'");
 			redirect('resep_obat/lihat/'.$id_periksa,'');
+		}
+	}
+	
+	function tambah_aksi_pemeriksaan(){
+		$username = $this->session->userdata('username');
+		$kode_resep = $this->input->post('kd_resep');
+		$kd_resep = $this->input->post('kd_resep');
+		$id_obat = $this->input->post('id_obat');
+		// $aturan_pakai = implode(' , ', $this->input->post('aturan_pakai',TRUE)) ;
+		$aturan_pemakaian = $this->input->post('aturan_pemakaian');
+		$id_periksa = $this->input->post('id_periksa');
+		$tanggal_resep = $this->input->post('tanggal_resep');
+		$tambah = $this->input->post('tambahobat');
+		$simpan = $this->input->post('simpan');
+		$id_pemeriksaan = $this->input->post('id_pemeriksaan');
+		$id_dokter = $this->db->query("SELECT id_dokter FROM dokter WHERE username='$username'")->row_array();
+		$cek = $this->db->query("SELECT id_obat FROM detail_resep WHERE kd_resep='$kd_resep' AND id_obat='$id_obat'")->num_rows();
+		$cek2 = $this->db->query("SELECT stok_out, stok_tot FROM detail_resep WHERE kd_resep='$kd_resep' AND id_obat='$id_obat'")->row_array();
+		$stok = $this->input->post('stok');
+		$stok_out = $this->input->post('stok_out');
+		$stok_tot = floatval($stok) - floatval($stok_out);
+		$stok_out2 = floatval($stok_out) + $cek2['stok_out'];
+		$stok_tot2 = $cek2['stok_tot'] - floatval($stok_out);
+		$harga = $this->input->post('harga');
+		$total = floatval($stok_out) * floatval($harga);
+		$total2 = floatval($stok_out2) * floatval($harga);
+		$subtotal = $this->Resep_model->hitungjumlah('detail_resep', ['kd_resep' => $kd_resep]);
+		if ($tambah) {
+			if ($stok_tot < 0) {
+				// echo "<script language=\"javascript\">alert (\"Stok tidak cukup atau habis\"); document.location=\"../transaksi/tambah_keluar\"</script>";
+				echo "<script language=\"javascript\">alert (\"Stok tidak cukup atau habis\"); document.location=\"../resep_obat/detail/".$id_periksa."\"</script>";
+		    } else {
+				if ($cek > 0) {
+					$this->db->query("UPDATE detail_resep set stok_out='$stok_out2', stok_tot='$stok_tot2', total='$total2' WHERE kd_resep='$kd_resep' AND id_obat='$id_obat'");
+					redirect('pemeriksaan/ubah/'.$id_periksa,'');
+				} else {
+					$data = array(
+									'kd_resep' => $kd_resep,
+									'id_obat' => $id_obat,
+									// 'aturan_pakai' => $aturan_pakai,
+									'aturan_pemakaian' => $aturan_pemakaian,
+									'stok_out'  => $stok_out,
+									'stok_tot'  => $stok_tot,
+									'total'  => $total
+								); 
+					$this->Resep_model->input_data1($data, 'detail_resep');
+					// redirect('resep_obat/detail/'.$id_periksa,'');
+					redirect('pemeriksaan/ubah/'.$id_periksa,'');
+				}
+			}
+		} else if ($simpan){
+			$data = array(
+							'kd_resep' => $kd_resep,
+							'id_pemeriksaan' => $id_periksa,
+							'subtotal' => $subtotal,
+							'tanggal_resep' => $tanggal_resep,
+							'id_dokter' => $id_dokter['id_dokter']
+						);  // asli
+			// $this->Resep_model->input_data($data, 'resep'); // asli
+			$this->Resep_model->updateResep($kd_resep, $subtotal, $tanggal_resep); // asli
+			$this->db->query("UPDATE obat JOIN detail_resep ON obat.id_obat = detail_resep.id_obat SET obat.stok = detail_resep.stok_tot WHERE detail_resep.kd_resep = '$kd_resep'");
+			// redirect('resep_obat/lihat/'.$id_periksa,'');
+			redirect('pemeriksaan/ubah/'.$id_periksa,'');
 		}
 	}
 

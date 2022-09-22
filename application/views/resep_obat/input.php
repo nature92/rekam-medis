@@ -79,7 +79,8 @@
 												</div>
 											</div>
 										<div class="box-footer">
-											<input type="submit" name="tambah" class="btn btn-primary" id="simpandata" value="Tambah">
+											<!--<input type="submit" name="tambah" class="btn btn-primary" id="simpandata" value="Tambah">-->
+											<input type="submit" class="btn btn-success" value="Tambah" name="tambah">
 										</div>                            
 									</div>
 								   									
@@ -137,7 +138,7 @@
 													</td>
 													<input type="submit" class="btn btn-success" value="Simpan" name="simpan">
 												</tr>
-											</tfoot>            
+											</tfoot>
 										</table>
 										</form>
 									</div>

@@ -37,7 +37,8 @@ class Pembayaran extends CI_Controller {
 		$data['tarif'] = $this->Pembayaran_model->tampil();
 		$data['resep'] = $this->Resep_model->tampil();
 		$data['pemeriksaan'] = $this->Pembayaran_model->getBayar($where);
-		$data['bayar'] = $this->db->query("SELECT * FROM detail_bayar JOIN tarif on detail_bayar.id_tarif = tarif.id_tarif WHERE kd_bayar='$kodebayar'")->result();
+		$data['bayar'] = $this->db->query("SELECT * FROM detail_bayar left JOIN tarif on detail_bayar.id_tarif = tarif.id_tarif WHERE kd_bayar='$kodebayar'")->result();
+		// $data['pembayaran'] = $this->db->query("SELECT * FROM pembayaran join pemeriksaan on pemeriksaan.id_periksa = pembayaran.id_pemeriksaan where pembayaran.kd_resep = '$kd_resep' order by pembayaran.kd_bayar DESC")->result();
 		$subtotal = $this->Resep_model->hitungjumlahbayar('detail_bayar', ['kd_bayar' => $this->M_id->buat_kode_bayar()]);
 		$data['subtotal'] = $this->Resep_model->hitungjumlahbayar('detail_bayar', ['kd_bayar' => $this->M_id->buat_kode_bayar()]); 
 		$cek = $this->db->query("SELECT subtotal FROM resep WHERE kd_resep='$kd_resep'")->row_array();
