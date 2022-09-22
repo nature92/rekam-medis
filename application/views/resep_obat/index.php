@@ -43,8 +43,8 @@
                        <td><?= $r['diagnosa']?></td>
                        <td><?= $r['tindakan']?></td>
                       <td>
-                        <a href="<?= base_url('resep_obat/detail/'.$r['id_periksa']) ?>" class="btn btn-success btn-xs">Tambah</a>
-                        <a href="<?= base_url('resep_obat/lihat/'.$r['id_periksa']) ?>" class="btn btn-primary btn-xs "> lihat</a>  
+                        <a href="<?= base_url('resep_obat/detail/'.$r['id_periksa']) ?>" class="btn btn-primary btn-xs">Detail</a>
+                        <!--<a href="<?= base_url('resep_obat/lihat/'.$r['id_periksa']) ?>" class="btn btn-success btn-xs "> lihat</a>  -->
                       </td>
                      <?php } ?>
                     </tr>
