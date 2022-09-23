@@ -154,7 +154,9 @@ class Resep_obat extends CI_Controller {
 		if ($tambah) {
 			if ($stok_tot < 0) {
 				// echo "<script language=\"javascript\">alert (\"Stok tidak cukup atau habis\"); document.location=\"../transaksi/tambah_keluar\"</script>";
-				echo "<script language=\"javascript\">alert (\"Stok tidak cukup atau habis\"); document.location=\"../resep_obat/detail/".$id_periksa."\"</script>";
+				echo "<script language=\"javascript\">alert (\"Stok tidak cukup atau habis\"); document.location=\"../pemeriksaan/ubah/".$id_periksa."\"</script>";
+		    } else if ($stok_out < 0) {
+				echo "<script language=\"javascript\">alert (\"Stok keluar kurang dari 0 \"); document.location=\"../pemeriksaan/ubah/".$id_periksa."\"</script>";
 		    } else {
 				if ($cek > 0) {
 					$this->db->query("UPDATE detail_resep set stok_out='$stok_out2', stok_tot='$stok_tot2', total='$total2' WHERE kd_resep='$kd_resep' AND id_obat='$id_obat'");

@@ -135,10 +135,10 @@
 								<div class="box-body">
 									<form action="<?= base_url('resep_obat/tambah_aksi_pemeriksaan'); ?>" method="post">
 										<?php foreach ($data_pemeriksaan as $u) { ?>
+											<!--<input type="hidden" class="form-control" id="kd_resep" name="kd_resep" value="<?= $koderesep ?>" readonly>-->
 											<input type="hidden" class="form-control" id="kd_rm" name="kd_rm" value="<?= $u->kd_rm ?>" readonly>
 											<input type="hidden" class="form-control" id="id_periksa" name="id_periksa" value="<?= $u->id_periksa ?>" readonly>
 											<input type="hidden" class="form-control" id="nama_pasien" name="nama_pasien" value="<?= $u->nama_pasien ?>" readonly>
-											<!--<input type="hidden" class="form-control" id="kd_resep" name="kd_resep" value="<?= $koderesep ?>" readonly>-->
 											<input type="hidden" class="form-control" id="kd_resep" name="kd_resep" value="<?= $u->kd_resep ?>" readonly>
 											<input type="hidden" class="form-control" id="kd_resep" name="pengobatan" value="<?= $u->pengobatan ?>" readonly>
 											<input type="hidden" class="form-control" id="tanggal_resep" name="tanggal_resep" value="<?= date('Y-m-d')?>" >
