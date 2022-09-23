@@ -63,6 +63,7 @@ class Pemeriksaan extends CI_Controller {
 		$data['admin'] = $this->db->get_where('admin',['username' => $this->session->userdata('username')])->row_array();
 		$data['obat'] = $this->Obat_model->getAllObat()->result();
 		$kd_rm = $this->Pemeriksaan_model->getKdRm($id_periksa);
+		$kd_resep = $this->Resep_model->getKodeResep($id_periksa);
 		$where1 = array('kd_rm' => $kd_rm);
 		$data1['pasien'] = $this->Pemeriksaan_model->tampil_detail($where1)->result();
 		// $data2['pemeriksaan'] = $this->Pemeriksaan_model->tampil_pemeriksaan($where1)->result();  // asli
@@ -73,7 +74,8 @@ class Pemeriksaan extends CI_Controller {
 		$data['datadokter'] = $this->Pemeriksaan_model->getdatadokter();
 		$data['tarif'] = $this->Pembayaran_model->tampil();
 		$data['resep'] = $this->db->query(" SELECT * FROM detail_resep JOIN obat on detail_resep.id_obat = obat.id_obat left join resep on resep.kd_resep = detail_resep.kd_resep WHERE resep.id_pemeriksaan='".$id_periksa."'")->result();
-		$data['subtotal'] = $this->Resep_model->hitungjumlah('detail_resep', ['kd_resep' => $this->M_id->buat_kode_resep()]);
+		// $data['subtotal'] = $this->Resep_model->hitungjumlah('detail_resep', ['kd_resep' => $this->M_id->buat_kode_resep()]);
+		$data['subtotal'] = $this->Resep_model->hitungjumlahbayarresep($kd_resep);
 		$this->load->view('templates/home_header', $judul);
 		$this->load->view('templates/home_sidebar',$data);
 		$this->load->view('templates/home_topbar', $data);

@@ -16,7 +16,8 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
-		$judul['judul'] = 'Halaman Beranda Dokter';
+		// $judul['judul'] = 'Halaman Beranda Dokter';
+		$judul['judul'] = 'Selamat datang';
 		$data['jumlahpasien'] = $this->Pasien_model->jumlahpasien();
 		$data['jumlahrm'] = $this->Pemeriksaan_model->jumlahrm();
 		$data['dokter'] = $this->db->get_where('dokter',['username' => $this->session->userdata('username')])->row_array();

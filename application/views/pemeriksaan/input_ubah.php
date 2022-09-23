@@ -220,7 +220,7 @@
 											<tfoot>
 												<tr>
 													<td colspan="7" style="text-align: center;">Subtotal</td>
-													<td><?= "Rp. ".number_format($subtotal)." ,-" ?></td>
+													<td><?= "Rp. ".number_format($subtotal,0,',','.')." ,00" ?></td>
 													<td>
 														<center>
 															<div class="box-footer">

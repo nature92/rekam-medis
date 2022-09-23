@@ -51,8 +51,8 @@ class M_id extends CI_Model {
 		  $this->db->limit(1);    
 		  $query = $this->db->get('resep');      //cek dulu apakah ada sudah ada kode di tabel.    
 		  if($query->num_rows() <> 0){      
-		   //jika kode ternyata sudah ada.      
-		   $data = $query->row();      
+		   //jika kode ternyata sudah ada.
+		   $data = $query->row();
 		   // $kode = intval($data->kode) + 1; //asli   
 		   $kode = intval($data->kode);    
 		  }

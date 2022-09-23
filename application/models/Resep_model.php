@@ -47,6 +47,28 @@ class Resep_model extends CI_Model {
 			return 0;
 		}
 	}
+	
+	public function getKodeResep($id_periksa) {
+        $sql = $this->db->query( " SELECT kd_resep FROM resep WHERE id_pemeriksaan='".$id_periksa."'  ");
+        $obj = $sql->row_object();
+        $num = $sql->num_rows();
+        if ($num > 0) {
+            return $obj->kd_resep;
+        } else {
+            return '';
+        }
+    }
+	
+	public function hitungjumlahbayarresep($kd_resep) {
+        $sql = $this->db->query( " SELECT sum(total) as total from detail_resep where kd_resep = '".$kd_resep."' ");
+        $obj = $sql->row_object();
+        $num = $sql->num_rows();
+        if ($num > 0) {
+            return $obj->total;
+        } else {
+            return '';
+        }
+    }
 
 	public function hitungjumlahbayar($table, $where)
 	{
