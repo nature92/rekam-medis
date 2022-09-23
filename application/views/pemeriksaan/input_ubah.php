@@ -138,7 +138,8 @@
 											<input type="hidden" class="form-control" id="kd_rm" name="kd_rm" value="<?= $u->kd_rm ?>" readonly>
 											<input type="hidden" class="form-control" id="id_periksa" name="id_periksa" value="<?= $u->id_periksa ?>" readonly>
 											<input type="hidden" class="form-control" id="nama_pasien" name="nama_pasien" value="<?= $u->nama_pasien ?>" readonly>
-											<input type="hidden" class="form-control" id="kd_resep" name="kd_resep" value="<?= $koderesep ?>" readonly>
+											<!--<input type="hidden" class="form-control" id="kd_resep" name="kd_resep" value="<?= $koderesep ?>" readonly>-->
+											<input type="hidden" class="form-control" id="kd_resep" name="kd_resep" value="<?= $u->kd_resep ?>" readonly>
 											<input type="hidden" class="form-control" id="kd_resep" name="pengobatan" value="<?= $u->pengobatan ?>" readonly>
 											<input type="hidden" class="form-control" id="tanggal_resep" name="tanggal_resep" value="<?= date('Y-m-d')?>" >
 										<?php } ?>
@@ -177,7 +178,7 @@
 											</div>
 										</div>
 										<div class="box-footer">
-											<input type="submit" name="tambahobat" class="btn btn-primary" id="simpandata" value="Tambah List Obat">
+											<input type="submit" name="tambah" class="btn btn-primary" id="simpandata" value="Tambah List Obat">
 										</div>
 										<hr>
 										<h3 class="box-title">Data Resep Obat</h3>

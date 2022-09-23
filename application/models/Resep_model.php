@@ -114,7 +114,8 @@ class Resep_model extends CI_Model {
 		$this->db->select('*');    
 		$this->db->from('pasien');
 		$this->db->join('pemeriksaan', 'pasien.kd_rm = pemeriksaan.kd_rm');
-		$this->db->where_in('id_periksa',$where);
+		$this->db->join('resep', 'resep.id_pemeriksaan = pemeriksaan.id_periksa');
+		$this->db->where_in('pemeriksaan.id_periksa',$where);
 		return $query = $this->db->get();
 	}
 

@@ -136,7 +136,7 @@ class Resep_obat extends CI_Controller {
 		$aturan_pemakaian = $this->input->post('aturan_pemakaian');
 		$id_periksa = $this->input->post('id_periksa');
 		$tanggal_resep = $this->input->post('tanggal_resep');
-		$tambah = $this->input->post('tambahobat');
+		$tambah = $this->input->post('tambah');
 		$simpan = $this->input->post('simpan');
 		$id_pemeriksaan = $this->input->post('id_pemeriksaan');
 		$id_dokter = $this->db->query("SELECT id_dokter FROM dokter WHERE username='$username'")->row_array();
@@ -171,7 +171,7 @@ class Resep_obat extends CI_Controller {
 								); 
 					$this->Resep_model->input_data1($data, 'detail_resep');
 					// redirect('resep_obat/detail/'.$id_periksa,'');
-					redirect('pemeriksaan/ubah/'.$id_periksa,'');
+					redirect('pemeriksaan/ubah/'.$id_periksa);
 				}
 			}
 		} else if ($simpan){
@@ -186,7 +186,7 @@ class Resep_obat extends CI_Controller {
 			$this->Resep_model->updateResep($kd_resep, $subtotal, $tanggal_resep); // asli
 			$this->db->query("UPDATE obat JOIN detail_resep ON obat.id_obat = detail_resep.id_obat SET obat.stok = detail_resep.stok_tot WHERE detail_resep.kd_resep = '$kd_resep'");
 			// redirect('resep_obat/lihat/'.$id_periksa,'');
-			redirect('pemeriksaan/ubah/'.$id_periksa,'');
+			redirect('pemeriksaan/ubah/'.$id_periksa);
 		}
 	}
 
