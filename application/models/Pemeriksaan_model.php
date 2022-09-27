@@ -229,5 +229,16 @@ class Pemeriksaan_model extends CI_Model {
             return '';
         }
     }
+	
+	public function cekResepPeriksa($id_periksa){
+        $sql = $this->db->query("select kd_resep from resep where id_pemeriksaan = '" . $id_periksa . "' ");
+        $num = $sql->num_rows();
+        if ($num > 0) {
+            $res = $sql->row();
+            return $res->kd_resep;
+        } else {
+            return 0;
+        }
+    } 
 
 }

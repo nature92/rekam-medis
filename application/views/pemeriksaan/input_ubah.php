@@ -213,7 +213,8 @@
 													<td><?= 'Rp. '.number_format($r->total,0,',','.') ?></td>
 													<td><?= $r->id_pemeriksaan ?></td>
 													<td>
-														<a href="<?= base_url('resep_obat/hapus/'.$r->id_detail.'/'.$r->id_pemeriksaan) ?>" class="btn btn-danger btn-xs float-right">Hapus</a>										
+														<!--<a href="<?= base_url('resep_obat/hapus/'.$r->id_detail.'/'.$r->id_pemeriksaan) ?>" class="btn btn-danger btn-xs float-right">Hapus</a> -->
+														<a href="<?= base_url('pemeriksaan/hapus_resep/'.$r->id_detail.'/'.$r->id_pemeriksaan) ?>" class="btn btn-danger btn-xs float-right">Hapus</a>
 													</td>
 												</tr> 
 												<?php } ?>

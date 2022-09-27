@@ -7,6 +7,7 @@
 				<div class="box">
 					<!-- /.box-header -->
 					<div class="box-body">
+						<?php echo $this->session->flashdata('msg'); ?>
 						<table id="example1" class="table table-bordered table-striped ">
 							<thead>
 								<tr>
@@ -41,6 +42,7 @@
 									<!--<td><?= timespan($awal, $ayeuna, 2);  ?></td>-->
 									<td>
 										<a href="<?= base_url('pemeriksaan/ubah/'.$r->id_periksa) ?>" class="btn btn-primary btn-xs "> Detail</a>
+										<a href="<?= base_url('pemeriksaan/hapus/'.$r->id_periksa) ?>" class="btn btn-danger btn-xs" onclick="return confirm('yakin dok, mau dihapus?');">Hapus</a>
 										<!--<a href="<?= base_url('pemeriksaan/periksa/'.$r->kd_rm) ?>" class="btn btn-success btn-xs "> Tambah</a> -->
 									</td>
 								</tr> 

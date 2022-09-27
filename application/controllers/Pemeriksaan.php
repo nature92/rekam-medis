@@ -235,8 +235,16 @@ class Pemeriksaan extends CI_Controller {
 	}
 	
 	public function hapus($id_periksa){
-		$this->Pemeriksaan_model->hapus_data($id_periksa);
-		redirect('pemeriksaan/index');
+		$koderesep = $this->Pemeriksaan_model->cekResepPeriksa($id_periksa);
+		if($koderesep == '' or $koderesep == null){
+			$this->Pemeriksaan_model->hapus_data($id_periksa);
+			redirect('pemeriksaan/index');
+		}else{
+			$this->session->set_flashdata('msg', '<div class="alert alert-error"> 
+												  <button type="button" class="close" data-dismiss="alert">&times;</button>Gagal hapus, data resep belum dihapus.
+												</div>');
+			redirect('pemeriksaan/index');
+		}
 	}
 
 	
@@ -336,5 +344,10 @@ class Pemeriksaan extends CI_Controller {
 	  	$data['ket'] = $ket; 
 	  	$data['alamat'] = $alamat;
 	  	$this->load->view('pemeriksaan/preview', $data);
+	}
+	
+	public function hapus_resep($kd_resep, $id_pemeriksaan){
+		$this->Resep_model->hapus_data($kd_resep);
+		redirect('pemeriksaan/ubah/'.$id_pemeriksaan);
 	}
 }
