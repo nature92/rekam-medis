@@ -139,6 +139,11 @@ class Resep_model extends CI_Model {
 		$this->db->where('id_detail', $id_detail);
 		$this->db->delete('detail_resep');		
 	}
+	
+	public function hapus_data_resep($kd_resep){
+		$this->db->where('kd_resep', $kd_resep);
+		$this->db->delete('resep');		
+	}
 
 	public function hapus_data_masuk($kd_masuk){
 		$this->db->where('kd_masuk', $kd_masuk);

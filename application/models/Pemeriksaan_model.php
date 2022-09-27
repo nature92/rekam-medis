@@ -239,6 +239,17 @@ class Pemeriksaan_model extends CI_Model {
         } else {
             return 0;
         }
-    } 
+    }
+	
+	public function cekDetailResepPeriksa($kd_resep){
+        $sql = $this->db->query("select count(kd_resep) as kd_resep from detail_resep where kd_resep = '".$kd_resep."' ");
+        $num = $sql->num_rows();
+        if ($num > 0) {
+            $res = $sql->row();
+            return $res->kd_resep;
+        } else {
+            return 0;
+        }
+    }
 
 }

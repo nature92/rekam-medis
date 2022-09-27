@@ -346,8 +346,15 @@ class Pemeriksaan extends CI_Controller {
 	  	$this->load->view('pemeriksaan/preview', $data);
 	}
 	
-	public function hapus_resep($kd_resep, $id_pemeriksaan){
-		$this->Resep_model->hapus_data($kd_resep);
-		redirect('pemeriksaan/ubah/'.$id_pemeriksaan);
+	public function hapus_resep($id_detail, $id_pemeriksaan, $kd_resep){
+		$koderesep = $this->Pemeriksaan_model->cekDetailResepPeriksa($kd_resep);
+		if($koderesep=='1'){
+			$this->Resep_model->hapus_data_resep($kd_resep);
+			$this->Resep_model->hapus_data($id_detail);
+			redirect('pemeriksaan/ubah/'.$id_pemeriksaan);
+		}else{
+			$this->Resep_model->hapus_data($id_detail);
+			redirect('pemeriksaan/ubah/'.$id_pemeriksaan);
+		}
 	}
 }
