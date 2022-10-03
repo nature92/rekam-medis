@@ -137,7 +137,7 @@ class Resep_model extends CI_Model {
 
 	public function hapus_data($id_detail){
 		$this->db->where('id_detail', $id_detail);
-		$this->db->delete('detail_resep');		
+		$this->db->delete('detail_resep');
 	}
 	
 	public function hapus_data_resep($kd_resep){
@@ -281,5 +281,15 @@ class Resep_model extends CI_Model {
 		$this->db->where('kd_resep', $kd_resep);
 		$this->db->update('resep', $data);
 	}
+	
+	public function kembalikan_stok_obat($jumlah, $id_obat){
+        $sql = $this->db->query(" UPDATE obat SET stok = '" . $jumlah . "' WHERE id_obat = '" . $id_obat . "' ;  ");
+        if ($this->db->affected_rows() > 0) {
+            $result = TRUE;
+        } else {
+            $result = FALSE;
+        }
+        return $result;
+    }
 
 }

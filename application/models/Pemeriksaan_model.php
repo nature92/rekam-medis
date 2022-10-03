@@ -34,6 +34,14 @@ class Pemeriksaan_model extends CI_Model {
 		$this->db->where_in('id_periksa',$id_periksa);
 		return $query = $this->db->get();
 	}
+	
+	public function tampil_pembayaran($kodebayar){
+  		$this->db->select('*');    
+		$this->db->from('detail_bayar');
+		$this->db->join('tarif', 'detail_bayar.id_tarif = tarif.id_tarif');
+  		$this->db->where('kd_bayar', $kodebayar );
+  		return $query = $this->db->get();
+  	}
 
 	public function getAllRMSortRm(){
 		$query = "SELECT `pemeriksaan`.`kd_rm` FROM  `pemeriksaan` ORDER BY `tanggal` DESC ";
@@ -110,7 +118,7 @@ class Pemeriksaan_model extends CI_Model {
   		$this->db->where('tanggal BETWEEN"'.date('Y-m-d', strtotime($tanggal1)).'"and"'.date('Y-m-d', strtotime($tanggal2)).'"'); 
   		$this->db->order_by('tanggal');   
   		return $query = $this->db->get()->result_array();// Tampilkan data transaksi sesuai tanggal yang diinput oleh user pada filter  
-  	}  
+  	}
 
   	public function kd_rm(){        
   		$this->db->select('*');    
@@ -231,7 +239,18 @@ class Pemeriksaan_model extends CI_Model {
     }
 	
 	public function cekResepPeriksa($id_periksa){
-        $sql = $this->db->query("select kd_resep from resep where id_pemeriksaan = '" . $id_periksa . "' ");
+        $sql = $this->db->query("select count(kd_resep) as kd_resep from resep where id_pemeriksaan = '" . $id_periksa . "' ");
+        $num = $sql->num_rows();
+        if ($num > 0) {
+            $res = $sql->row();
+            return $res->kd_resep;
+        } else {
+            return 0;
+        }
+    }
+	
+	public function cekPembayaran($id_periksa){
+        $sql = $this->db->query("select count(kd_resep) as kd_resep  from pembayaran where id_pemeriksaan = '" . $id_periksa . "' ");
         $num = $sql->num_rows();
         if ($num > 0) {
             $res = $sql->row();
@@ -247,6 +266,17 @@ class Pemeriksaan_model extends CI_Model {
         if ($num > 0) {
             $res = $sql->row();
             return $res->kd_resep;
+        } else {
+            return 0;
+        }
+    }
+	
+	public function getStokObat($id_obat){
+        $sql = $this->db->query("select stok from obat where id_obat = '".$id_obat."' ");
+        $num = $sql->num_rows();
+        if ($num > 0) {
+            $res = $sql->row();
+            return $res->stok;
         } else {
             return 0;
         }

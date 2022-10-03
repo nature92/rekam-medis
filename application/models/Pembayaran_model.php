@@ -1,5 +1,6 @@
 <?php 
 class Pembayaran_model extends CI_Model {
+	
 	function getAllBayar(){
 		$this->db->select('*');
 		$this->db->from('resep');
@@ -34,7 +35,6 @@ class Pembayaran_model extends CI_Model {
 	public function getResepById($kd_resep){
 		return $this->db->get_where('resep_obat', ['kd_resep' => $kd_resep ])->row_array();
 	}
-
 	
 	public function getRMById($id_periksa){
 		return $this->db->get_where('pemeriksaan', ['id_periksa' => $id_periksa ])->row_array();
@@ -158,5 +158,16 @@ class Pembayaran_model extends CI_Model {
 	function get_all_produk(){
         $hasil=$this->db->get('tarif');
         return $hasil->result();
+    }
+	
+	public function cekDetailPembayaran($kd_resep){
+        $sql = $this->db->query("select count(kd_resep) as kd_resep from detail_resep where kd_resep = '".$kd_resep."' ");
+        $num = $sql->num_rows();
+        if ($num > 0) {
+            $res = $sql->row();
+            return $res->kd_resep;
+        } else {
+            return 0;
+        }
     }
 }

@@ -129,7 +129,6 @@ class Resep_obat extends CI_Controller {
 	
 	function tambah_aksi_pemeriksaan(){
 		$username = $this->session->userdata('username');
-		$kode_resep = $this->input->post('kd_resep');
 		$kd_resep = $this->input->post('kd_resep');
 		$id_obat = $this->input->post('id_obat');
 		// $aturan_pakai = implode(' , ', $this->input->post('aturan_pakai',TRUE)) ;
@@ -205,6 +204,16 @@ class Resep_obat extends CI_Controller {
 						'stok' => $cek->stok,
 						'harga' => $cek->harga,
 						'id_obat' => $cek->id_obat
+					);
+		echo json_encode($data);
+	}
+	
+	public function cek_tarif(){
+		$id_tarif = $this->input->post('id_tarif');
+		$cek = $this->db->query("SELECT * FROM tarif WHERE id_tarif='$id_tarif' ")->row();
+		$data = array(
+						'harga' => $cek->harga,
+						'id_tarif' => $cek->id_tarif
 					);
 		echo json_encode($data);
 	}

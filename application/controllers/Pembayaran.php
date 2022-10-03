@@ -91,6 +91,44 @@ class Pembayaran extends CI_Controller {
 			redirect('pembayaran/lihat/'.$kd_resep,'');
 		}
 	}
+	
+	function tambah_aksi_pembayaran(){
+		$username = $this->session->userdata('username');
+		$kd_resep = $this->input->post('kd_resep');
+		$kd_bayar = $this->input->post('kd_bayar');
+		$id_tarif = $this->input->post('id_tarif');
+		$id_periksa = $this->input->post('id_periksa');
+		$tanggal_bayar = $this->input->post('tanggal_bayar');
+		$total = $this->input->post('hargatarif');
+		$tambah = $this->input->post('tambah');
+		$save = $this->input->post('save');
+		$id_admin = $this->db->query("SELECT id_admin FROM admin WHERE username='$username'")->row_array();
+		$subtotal = $this->Resep_model->hitungjumlahbayar('detail_bayar', ['kd_bayar' => $kd_bayar]);
+		$cek = $this->db->query("SELECT subtotal FROM resep WHERE kd_resep='$kd_resep' ")->row_array();
+		$totalbayar = floatval($subtotal) + $cek['subtotal'];
+		if ($tambah) {	
+			$data = array(		
+							'kd_bayar' => $kd_bayar,
+							'id_tarif' => $id_tarif,
+							'total'  => $total
+						); 
+			$this->Pembayaran_model->input_data1($data, 'detail_bayar');
+			// redirect('pembayaran/tambah/'.$kd_resep,'');
+			redirect('pemeriksaan/ubah/'.$id_periksa,'');
+		} else if ($save){
+			$data = array(
+							'kd_resep' => $kd_resep,
+							'kd_bayar' => $kd_bayar,
+							'id_pemeriksaan' => $id_periksa,
+							'totalbayar' => $totalbayar,
+							'tanggal_bayar' => $tanggal_bayar,
+							'id_admin' => $id_admin['id_admin']
+						); 
+			$this->Pembayaran_model->input_data($data, 'pembayaran');
+			// redirect('pembayaran/lihat/'.$kd_resep,'');
+			redirect('pemeriksaan/ubah/'.$id_periksa,'');
+		}
+	}
 
 	public function lihat($kd_resep){
 		$judul['judul'] = 'Halaman Detail Data Pembayaran';
@@ -114,6 +152,18 @@ class Pembayaran extends CI_Controller {
 		$where = array('kd_bayar' => $kodebayar);
 		$this->Pembayaran_model->hapus($where, 'detail_bayar');
 		redirect('pembayaran/index');
+	}
+	
+	public function hapus_pembayaran($id_detail, $kd_bayar, $id_tarif){
+		$koderesep = $this->Pemeriksaan_model->cekDetailPembayaran($kd_resep);
+		if($koderesep=='1'){
+			$this->Resep_model->hapus_data_resep($kd_resep);
+			$this->Resep_model->hapus_data($id_detail);
+			redirect('pemeriksaan/ubah/'.$id_pemeriksaan);
+		}else{
+			$this->Resep_model->hapus_data($id_detail);
+			redirect('pemeriksaan/ubah/'.$id_pemeriksaan);
+		}
 	}
 
 	public function hapus($kd_bayar){

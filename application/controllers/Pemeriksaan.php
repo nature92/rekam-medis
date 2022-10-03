@@ -76,6 +76,16 @@ class Pemeriksaan extends CI_Controller {
 		$data['resep'] = $this->db->query(" SELECT * FROM detail_resep JOIN obat on detail_resep.id_obat = obat.id_obat left join resep on resep.kd_resep = detail_resep.kd_resep WHERE resep.id_pemeriksaan='".$id_periksa."'")->result();
 		// $data['subtotal'] = $this->Resep_model->hitungjumlah('detail_resep', ['kd_resep' => $this->M_id->buat_kode_resep()]);
 		$data['subtotal'] = $this->Resep_model->hitungjumlahbayarresep($kd_resep);
+		$data['kodebayar'] = $this->M_id->buat_kode_bayar();
+		$kodebayar = $this->M_id->buat_kode_bayar();
+		$where = array('kd_resep' => $kd_resep);
+		$data['kode'] = $this->Pembayaran_model->tampil_detail($where)->result();
+		$data2['bayar'] = $this->db->query("SELECT * FROM detail_bayar left JOIN tarif on detail_bayar.id_tarif = tarif.id_tarif WHERE kd_bayar='".$kodebayar."'")->result();
+		// $data2['bayar'] = $this->Pemeriksaan_model->tampil_pembayaran($kodebayar)->result();
+		$subtotalbayar = $this->Resep_model->hitungjumlahbayar('detail_bayar', ['kd_bayar' => $kodebayar]);
+		$data['subtotalbayar'] = $this->Resep_model->hitungjumlahbayar('detail_bayar', ['kd_bayar' => $kodebayar]); 
+		$cek = $this->db->query("SELECT subtotal FROM resep WHERE kd_resep='$kd_resep'")->row_array();
+		$data['totalbayar'] = floatval($subtotalbayar) + $cek['subtotal'];
 		$this->load->view('templates/home_header', $judul);
 		$this->load->view('templates/home_sidebar',$data);
 		$this->load->view('templates/home_topbar', $data);
@@ -192,7 +202,7 @@ class Pemeriksaan extends CI_Controller {
 		$diagnosa = $this->input->post('diagnosa');
 		$dokter_jaga = $this->input->post('dokter_jaga');
 		$tanggal = $this->input->post('tanggal');
-		$tindakan = implode(' , ', $this->input->post('tindakan',TRUE));
+		// $tindakan = implode(' , ', $this->input->post('tindakan',TRUE));
 		$tinggi_badan = $this->input->post('tinggi_badan');
 		$berat_badan = $this->input->post('berat_badan');
 		$lingkar_perut = $this->input->post('lingkar_perut');
@@ -208,7 +218,7 @@ class Pemeriksaan extends CI_Controller {
 						'diagnosa' => $diagnosa,
 						'id_dokter' => $dokter_jaga,
 						'tanggal' => $tanggal,
-						'tindakan' => $tindakan,
+						// 'tindakan' => $tindakan,
 						'tinggi_badan' => $tinggi_badan,
 						'berat_badan' => $berat_badan,
 						'lingkar_perut' => $lingkar_perut,
@@ -236,13 +246,29 @@ class Pemeriksaan extends CI_Controller {
 	
 	public function hapus($id_periksa){
 		$koderesep = $this->Pemeriksaan_model->cekResepPeriksa($id_periksa);
-		if($koderesep == '' or $koderesep == null){
-			$this->Pemeriksaan_model->hapus_data($id_periksa);
-			redirect('pemeriksaan/index');
-		}else{
+		$kodebayar = $this->Pemeriksaan_model->cekPembayaran($id_periksa);
+		// if($koderesep == '' or $koderesep == null){
+			// $this->Pemeriksaan_model->hapus_data($id_periksa);
+			// redirect('pemeriksaan/index');
+		// }else{
+			// $this->session->set_flashdata('msg', '<div class="alert alert-error"> 
+												  // <button type="button" class="close" data-dismiss="alert">&times;</button>Gagal hapus, data resep belum dihapus.
+												// </div>');
+			// redirect('pemeriksaan/index');
+		// }
+		
+		if($koderesep < 0){
 			$this->session->set_flashdata('msg', '<div class="alert alert-error"> 
 												  <button type="button" class="close" data-dismiss="alert">&times;</button>Gagal hapus, data resep belum dihapus.
 												</div>');
+			redirect('pemeriksaan/index');
+		}else if($kodebayar < 0){
+			$this->session->set_flashdata('msg', '<div class="alert alert-error"> 
+												  <button type="button" class="close" data-dismiss="alert">&times;</button>Gagal hapus, data pembayaran belum dihapus.
+												</div>');
+			redirect('pemeriksaan/index');
+		}else{
+			$this->Pemeriksaan_model->hapus_data($id_periksa);
 			redirect('pemeriksaan/index');
 		}
 	}
@@ -346,14 +372,18 @@ class Pemeriksaan extends CI_Controller {
 	  	$this->load->view('pemeriksaan/preview', $data);
 	}
 	
-	public function hapus_resep($id_detail, $id_pemeriksaan, $kd_resep){
+	public function hapus_resep($id_detail, $id_pemeriksaan, $kd_resep, $stok_out, $id_obat){
 		$koderesep = $this->Pemeriksaan_model->cekDetailResepPeriksa($kd_resep);
-		if($koderesep=='1'){
+		$stokObat = $this->Pemeriksaan_model->getStokObat($id_obat);
+		$jumlah = $stokObat + $stok_out;
+		if($koderesep == '1'){
 			$this->Resep_model->hapus_data_resep($kd_resep);
 			$this->Resep_model->hapus_data($id_detail);
+			$this->Resep_model->kembalikan_stok_obat($jumlah, $id_obat);
 			redirect('pemeriksaan/ubah/'.$id_pemeriksaan);
 		}else{
 			$this->Resep_model->hapus_data($id_detail);
+			$this->Resep_model->kembalikan_stok_obat($jumlah, $id_obat);
 			redirect('pemeriksaan/ubah/'.$id_pemeriksaan);
 		}
 	}

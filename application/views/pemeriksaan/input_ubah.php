@@ -24,7 +24,7 @@
 											</div>
 										</div>
 										<div class="form-group row">
-											<label  class="col-form-label col-sm-2">Tindakan</label>
+											<!--<label  class="col-form-label col-sm-2">Tindakan</label>
 											<div class="col-sm-4">
 												<select class="form-control select2" name="tindakan[]" style="width: 100%;" required multiple="multiple" data-placeholder="Pilih Tindakan">
 													<?php
@@ -37,7 +37,7 @@
 														}
 													?>
 												</select>
-											</div>
+											</div> -->
 											<label  class="col-form-label col-sm-2">Dokter Jaga</label>
 											<div class="col-sm-4">
 												<select class="form-control select2" name="dokter_jaga" style="width: 100%;" required data-placeholder="Pilih Dokter Jaga">
@@ -128,8 +128,8 @@
 							
 							
 						</div>
-						
-						
+							
+							
 							<h3> Resep Obat </h3>
 							<div class="box box-success">
 								<div class="box-body">
@@ -146,7 +146,7 @@
 										<div class="form-group row">
 											<label  class="col-sm-2 col-form-label">Nama Obat </label>
 											<div class="col-sm-3">
-												<select class="form-control select2"  id="id_obat" name="id_obat" >
+												<select class="form-control select2" id="id_obat" name="id_obat" >
 													<option selected="selected">Pilih Obat</option>
 														<?php foreach ($obat as $r) : ?>
 														<option value="<?= $r->id_obat ?>" value="<?= $r->id_obat ?>"><?= $r->nama_obat ?></option>
@@ -214,7 +214,7 @@
 													<td><?= $r->id_pemeriksaan ?></td>
 													<td>
 														<!--<a href="<?= base_url('resep_obat/hapus/'.$r->id_detail.'/'.$r->id_pemeriksaan) ?>" class="btn btn-danger btn-xs float-right">Hapus</a> -->
-														<a href="<?= base_url('pemeriksaan/hapus_resep/'.$r->id_detail.'/'.$r->id_pemeriksaan.'/'.$r->kd_resep) ?>" class="btn btn-danger btn-xs float-right">Hapus</a>
+														<a href="<?= base_url('pemeriksaan/hapus_resep/'.$r->id_detail.'/'.$r->id_pemeriksaan.'/'.$r->kd_resep.'/'.$r->stok_out.'/'.$r->id_obat) ?>" class="btn btn-danger btn-xs float-right">Hapus</a>
 													</td>
 												</tr> 
 												<?php } ?>
@@ -235,6 +235,89 @@
 											</tfoot>
 										</table>
 										<input type="submit" class="btn btn-success" value="Simpan" name="simpan">
+									</form>
+								</div>
+							</div>
+							
+							<h3> Tindakan </h3>
+							<div class="box box-success">
+								<div class="box-body">
+									<form action="<?= base_url('pembayaran/tambah_aksi_pembayaran'); ?>" method="post">
+										<input type="hidden" class="form-control" id="kd_bayar" name="kd_bayar" value="<?= $kodebayar ?>" readonly>
+										<?php foreach ($data_pemeriksaan as $b){ ?>
+										<input type="hidden" class="form-control" id="kd_resep" name="kd_resep" value="<?php echo  $b->kd_resep ?>" readonly>
+										<input type="hidden" class="form-control" id="id_periksa" name="id_periksa" value="<?php echo  $b->id_periksa ?>" readonly>
+										<?php } ?>
+										<div class="form-group row">
+											<label for="kode_bayar" class="col-sm-1 col-form-label">Tanggal </label>
+											<div class="col-sm-2">
+												<input type="date" class="form-control" id="tanggal_bayar" name="tanggal_bayar" value="<?= date('Y-m-d')?>" >
+											</div>
+											<label for="nama_tarif" class="col-sm-1 col-form-label">Tindakan</label> 
+											<div class="col-sm-4">
+												<select class="form-control select2"  id="id_tarif" name="id_tarif"><option value=''>Pilih Tindakan</option>
+													<?php foreach ($tarif as $r) : ?>
+														<option value="<?= $r['id_tarif'] ?>"><?= $r['nama_tarif'] ?></option>
+													<?php endforeach; ?>
+												</select>
+											</div>
+											<label for="harga" class="col-sm-1 col-form-label">Harga </label>
+											<div class="col-sm-2">
+												<input type="text" class="form-control" id="hargatarif" name="hargatarif" readonly>         
+											</div>  
+										</div>
+										<div class="box-footer">
+											<input type="submit" name="tambah" class="btn btn-primary" value="Tambah">
+										</div>
+										
+										<div class="box-header">
+											<h3 class="box-title">Data Pembayaran</h3>
+										</div>
+										<div class="box-body">
+											<table id="example2" class="table table-bordered table-hover ">
+												<thead>
+													<tr>
+														<th>No.</th>
+														<th>Jasa</th>
+														<th>Harga</th>
+														<th>Aksi</th>
+													</tr>
+												</thead>
+												<tbody>
+													<?php
+														  $no_rm = 1;
+														  foreach($bayar as $r) {
+													 ?> 
+														<tr>
+														  <td><?php echo $no_rm ++ ?></td>
+														  <td><?php echo $r->nama_tarif ?> </td>
+														  <td style="text-align: right;"><?php echo 'Rp. '.number_format($r->total,0,',','.') ?></td>
+														  <td> <!--<a href="<?= base_url('pembayaran/hapus_pembayaran/'.$r->id_detail.'/'.$r->kd_bayar.'/'.$r->id_tarif) ?>" class="btn btn-danger btn-xs float-right">Hapus</a> --> </td>
+														</tr> 
+													<?php } ?>
+												</tbody>
+												<tfoot>
+													<tr>
+														<td colspan="2" style="font-weight: bold; text-align: center; ">Sub Total Tindakan</td>
+														<td style="text-align: right;"><?php echo "Rp. ".number_format($subtotalbayar,0,',','.') ?></td>
+														<td> </td>
+													</tr>
+													<tr>
+														<td colspan="2" style="font-weight: bold; text-align:center;"> Biaya Obat </td>
+														<?php foreach ($kode as $b) { ?>
+														<td style="text-align: right;"><?php echo "Rp. ".number_format($b->subtotal,0,',','.') ?>  </td>
+														<?php } ?>
+														<td></td>
+													</tr>
+													<tr>
+														<td colspan="2" style="font-weight: bold; text-align: center;">Total Bayar</td>
+														<td style="text-align: right;"><?php echo "Rp. ".number_format($totalbayar,0,',','.') ?></td>
+														<td><!--<center> <a class="btn btn-warning" href="<?php echo base_url().'Pembayaran/hapus_detail_bayar/'.$kodebayar; ?>">Batal</a> </center> --></td>
+													</tr>
+												</tfoot>
+											</table>
+										</div>
+										<input type="submit" class="btn btn-success" value="Simpan" name="save">
 									</form>
 								</div>
 							</div>
@@ -263,6 +346,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $("#id_obat").chosen();
+    $("#id_tarif").chosen();
 })
 </script>
 <script type="text/javascript">
@@ -282,6 +366,22 @@ $(document).ready(function(){
 									}
 		});
       // alert(id);
+    });
+	
+	$('#id_tarif').change(function() {
+		var id1 = $(this).val();
+		$.ajax({
+			type : 'POST',
+			url : '<?= base_url('resep_obat/cek_tarif') ?>',
+			Cache : false,
+			dataType: "json",
+			data : 'id_tarif='+id1,
+			success : function(resp) {
+										$('#id_tarif').val(resp.id_tarif);
+										$('#hargatarif').val(resp.harga);
+									}
+		});
+		// alert(id1);
     });
 	
 	$("#simpandata").click(function(){
